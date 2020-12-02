@@ -4,14 +4,13 @@ import com.myProject.Main.Console;
 import com.myProject.Main.Player;
 
 public class ControlPanel {
-	Command[] slots;
 	Command last;
+	Command[] slots;
 
 	public ControlPanel(Command[] slots){
 		this.slots = slots;
 	}
   
-	// do command at slot i
 	public void execute(int i, Console console, Player player, String act) {
 		slots[i].execute(console, player, act);
 		last = slots[i];
@@ -20,5 +19,4 @@ public class ControlPanel {
 	void undo() {
 		last.undo();
 	}
-
 }

@@ -1,10 +1,5 @@
 package com.myProject.Main;
 
-//import Scenes.*;
-//import characters.*;
-//import locations.*;
-//import objects.*;
-
 import com.myProject.Observer.Subject;
 
 public class Main {

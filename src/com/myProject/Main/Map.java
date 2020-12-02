@@ -24,7 +24,6 @@ class Tree {
 
         public Location getLocation() { return location; }
 
-
         @Override
         public String toString() {
             return "Node{" +
@@ -34,30 +33,24 @@ class Tree {
     }
 
     public void insert(Node node, Location location) {
-        if(node.left == null)
-            node.left = new Node(location);
-        else
-            node.right = new Node(location);
+        if(node.left == null) node.left = new Node(location);
+        else node.right = new Node(location);
     }
 }
 
 public class Map {
     private Tree tree;
-
     private Node current;
-
-    public Node getCurrent() { return current; }
 
     Map() {
         Location[] locations = new Location[] { new Forest(), new ElfCity(), new Mountain(), new Sea(), new DemonKingdom() };
         this.tree = new Tree();
 
-        Node l0 = new Node(locations[LOCATION.FOREST.ordinal()]);
-        tree.insert(l0, locations[LOCATION.FOREST.ordinal()]);              // Level 1 [Nymphs]
+        Node l1 = new Node(locations[LOCATION.FOREST.ordinal()]);
+//      tree.insert(l0, locations[LOCATION.FOREST.ordinal()]);              // Level 1 [Nymphs]
+        this.current = l1;                                                  // Level 1 [Nymphs]
 
-        this.current = l0;
-
-        Node l1 = l0.left;
+//      Node l1 = l0.left;
         tree.insert(l1, locations[LOCATION.SEA.ordinal()]);                 // Level 2 [1] - L [Sirens]
         tree.insert(l1, locations[LOCATION.MOUNTAIN.ordinal()]);            // Level 2 [2] - R [Dwarves]
 
@@ -118,8 +111,10 @@ public class Map {
         tree.insert(l55.left, locations[LOCATION.DEMONKINGDOM.ordinal()]);  // Level 7 [4] - L [Typhon]
     }
 
+    public Node getCurrent() { return current; }
+
     public Location next(String pos) {
-        if (pos.equals("right"))
+        if (pos.equals("right") && current.right != null)
             current = current.right;
         else if (current.left != null)
             current = current.left;
