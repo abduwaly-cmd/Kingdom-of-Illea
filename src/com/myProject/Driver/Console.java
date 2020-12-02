@@ -1,4 +1,4 @@
-package com.myProject.Main;
+package com.myProject.Driver;
 
 
 import com.myProject.Observer.*;
@@ -32,8 +32,7 @@ public class Console extends ConcreteSubject implements Runnable {
 
     @Override
     public void run() {
-        while(running) {
+        while(running)
             notifyObservers(inputStream.getInput(), this);
-        }
     }
 }

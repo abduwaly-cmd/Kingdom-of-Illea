@@ -1,7 +1,7 @@
-package com.myProject.Main;
+package com.myProject.Driver;
 
 import com.myProject.Location.*;
-import com.myProject.Main.Tree.Node;
+import com.myProject.Driver.Tree.Node;
 
 enum LOCATION {
     FOREST,
@@ -26,9 +26,7 @@ class Tree {
 
         @Override
         public String toString() {
-            return "Node{" +
-                    "location=" + location +
-                    '}';
+            return location.toString();
         }
     }
 
@@ -112,6 +110,12 @@ public class Map {
     }
 
     public Node getCurrent() { return current; }
+    public Location getCurrentLocation() { return current.location; }
+    public Location[] getNext() {
+        if(current.right != null) return new Location[] { current.left.location, current.right.location };
+        else if (current.left != null) return new Location[] { current.left.location };
+        else return null;
+    }
 
     public Location next(String pos) {
         if (pos.equals("right") && current.right != null)

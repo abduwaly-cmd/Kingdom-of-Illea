@@ -8,52 +8,41 @@ public class terminalInput implements inputStream {
 
     public String[] parseInput(String userInput) {
         String out[];
+        userInput = userInput.toLowerCase();
         //splits the userInput into an array
         String[] inputArr = userInput.split(" ");
 
         if (userInput.equals(" ")) {
-            out = new String[] {"start"};
+            out = new String[] {"someThing that the input string equals"};
         }
         //checks if input is equal to the "mischief managed" and sets the output to "stop"
-        else if(userInput.toLowerCase().equals("test")) {
+        else if(userInput.equals("test")) {
             out = new String[] {"test"};
         }
-        else if(userInput.toLowerCase().equals("mischief managed")) {
+        else if(userInput.equals("mischief managed")) {
             out = new String[] {"stop"};
         }
         //checks if input is equal to the "look around" and sets the output to "look"
-        else if(userInput.toLowerCase().equals("look around")) {
+        else if(userInput.equals("look around")) {
             out = new String[] {"look"};
         }
-        else if(userInput.toLowerCase().equals("exit")) {
-            out = new String[] {"exit"};
-        }
-        else if(userInput.toLowerCase().equals("time")) {
+        else if(userInput.equals("time")) {
             out = new String[] {"watch"};
         }
-
-        //lol idk why this is there i guess for test purposes?? :')
-        else if(userInput.toLowerCase().equals("potato")) {
-            out = new String[] {"tomato"};
-        }
-
         //checks if the first word is "use" and sets the output to "use", "...."
-        else if(inputArr[0].toLowerCase().equals("use")) {
-            out = new String[] { "use", userInput.substring(4).toLowerCase()};
+        else if(inputArr[0].equals("use")) {
+            out = new String[] { "use", userInput.substring(4)};
         }
         //checks if the length is 2, first word is "walk" and sets the output to "walk", "...."
-        else if(inputArr.length == 2 && inputArr[0].toLowerCase().equals("walk")) {
-            out = new String[] { "walk", inputArr[1].toLowerCase()};
+        else if(inputArr.length == 2 && inputArr[0].equals("walk")) {
+            out = new String[] { "walk", inputArr[1]};
         }
-        else if(userInput.toLowerCase().equals("walk")) {
+        else if(userInput.equals("walk")) {
             out = new String[] {"walk", ""};
         }
         //checks if the length is 2 or more, first word is "talk", second is "to" and sets the output to "talk", "...."
-        else if(inputArr.length >= 2 && inputArr[0].toLowerCase().equals("talk") && inputArr[1].toLowerCase().equals("to")) {
+        else if(inputArr.length >= 2 && inputArr[0].equals("talk") && inputArr[1].equals("to")) {
             out = new String[] { "talk", userInput.substring(8) };
-        }
-        else if(inputArr.length == 2 && inputArr[0].toLowerCase().equals("found")) {
-            out = new String[] { "found", userInput.substring(6).toLowerCase() };
         } else {
             out = inputArr;
         }

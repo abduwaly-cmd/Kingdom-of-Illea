@@ -1,6 +1,6 @@
 package com.myProject.Observer;
 
-import com.myProject.Main.Console;
+import com.myProject.Driver.Console;
 
 public interface Observer {
     void update();

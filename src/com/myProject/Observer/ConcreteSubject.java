@@ -1,5 +1,5 @@
 package com.myProject.Observer;
-import com.myProject.Main.Console;
+import com.myProject.Driver.Console;
 
 import java.util.ArrayList;
 

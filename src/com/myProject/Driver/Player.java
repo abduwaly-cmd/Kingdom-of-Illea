@@ -1,4 +1,4 @@
-package com.myProject.Main;
+package com.myProject.Driver;
 
 import com.myProject.Location.Location;
 import com.myProject.Observer.*;
@@ -31,7 +31,7 @@ public class Player extends ConcreteObserver {
 		this.timer = new StopWatch();
 		Command[] cmds = new Command[] {new walkToLoc()};
 		this.controlPanel = new ControlPanel(cmds);
-		this.currentLocation = this.map.getCurrent().getLocation();
+		setLocation(this.map.getCurrentLocation(), this.map.getNext());
 	}
 	
 	public static synchronized Player getInstance(Subject subject, String name) {
@@ -52,8 +52,12 @@ public class Player extends ConcreteObserver {
 	public String toString() { return name; }
 	public Map getMap() { return this.map; }
 	void setDialogue(String s) { dialogue = s; }
+
 	public Location getLocation() { return currentLocation; }
-	public void setLocation(Location l) { currentLocation = l; }
+	public void setLocation(Location loc, Location[] nextLocs) {
+		currentLocation = loc;
+		currentLocation.setNextLocations(nextLocs);
+	}
 
 	@Override
 	public void update(String[] in, Console console) {

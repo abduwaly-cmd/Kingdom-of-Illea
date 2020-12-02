@@ -1,4 +1,4 @@
-package com.myProject.Main;
+package com.myProject.Driver;
 
 import com.myProject.Observer.*;
 import org.json.simple.parser.JSONParser;
@@ -27,7 +27,7 @@ public class TCP_Client extends ConcreteObserver implements Runnable {
     public boolean isReachable() {
         try {
             this.socket = new Socket();
-            this.socket.connect(new InetSocketAddress(this.host, this.port), 1000); // 192.168.1.101 57617
+            this.socket.connect(new InetSocketAddress(this.host, this.port), 1000);
             this.connected = true;
             return true;
         } catch (UnknownHostException e) {
@@ -73,9 +73,7 @@ public class TCP_Client extends ConcreteObserver implements Runnable {
         try {
             Thread.sleep(10);
             this.socket.close();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
     }

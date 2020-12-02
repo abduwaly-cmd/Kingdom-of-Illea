@@ -6,7 +6,7 @@ import com.myProject.Character.*;
 import java.util.ArrayList;
 
 public class Forest extends Location {
-	private instance;
+	//private instance;
 	private ArrayList<Character> characters = new ArrayList<Character>();
 
 	public Forest() {
