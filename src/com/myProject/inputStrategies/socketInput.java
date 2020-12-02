@@ -44,8 +44,6 @@ public class socketInput implements inputStream, Runnable {
             BufferedReader br = new BufferedReader(reader);
             while ((line = br.readLine()) != null && reading) {
                 JSONObject jsonObject = (JSONObject) parser.parse(line);
-                //System.out.println("----------------------------------------------------------------------------------------------------------------------------");
-                //System.out.println("toString >> " + jsonObject.toString());
                 out = new String[] {"socket", jsonObject.toString()};
             }
         } catch (UnknownHostException ex) {
