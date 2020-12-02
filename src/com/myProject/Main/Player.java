@@ -3,7 +3,15 @@ package com.myProject.Main;
 import com.myProject.Location.Location;
 import com.myProject.Observer.*;
 import com.myProject.Timer.StopWatch;
-//import locations.*;
+import com.myProject.playerCommands.Command;
+import com.myProject.playerCommands.ControlPanel;
+import com.myProject.playerCommands.walkToLoc;
+
+//enum commands {
+//	walk(0),
+//	look(1),
+//	time(2)
+//}
 
 public class Player extends ConcreteObserver {
 	private Map map;
@@ -13,6 +21,7 @@ public class Player extends ConcreteObserver {
 	private String dialogue;
 	private StopWatch timer;
 	private Location currentLocation;
+	private ControlPanel controlPanel;
 	private static Player instance;
 
 	private Player(Subject subject, String name) {
@@ -20,7 +29,9 @@ public class Player extends ConcreteObserver {
 		this.map = new Map();
 		this.name = name;
 		this.timer = new StopWatch();
-		this.currentLocation = this.map.current.location;
+		Command[] cmds = new Command[] {new walkToLoc()};
+		this.controlPanel = new ControlPanel(cmds);
+		this.currentLocation = this.map.getCurrent().getLocation();
 	}
 	
 	public static synchronized Player getInstance(Subject subject, String name) {
@@ -38,18 +49,11 @@ public class Player extends ConcreteObserver {
 	void setHealth(int i) {
 		health = i;
 	}
-	Location getlocation() {
-		return currentLocation;
-	}
-	public String toString() {
-		return name;
-	}
-	void setDialogue(String s) {
-		dialogue = s;
-	}
-	void setlocation(Location l) {
-		currentLocation = l;
-	}
+	public String toString() { return name; }
+	public Map getMap() { return this.map; }
+	void setDialogue(String s) { dialogue = s; }
+	public Location getLocation() { return currentLocation; }
+	public void setLocation(Location l) { currentLocation = l; }
 
 	@Override
 	public void update(String[] in, Console console) {
@@ -58,8 +62,7 @@ public class Player extends ConcreteObserver {
 				console.switchTerminaltoSocketInput();
 				break;
 			case "walk":
-				Location nextLoc = this.map.next(in[1]);
-				System.out.println("walked from " + currentLocation + " to " + nextLoc);
+				controlPanel.execute(0, console, this, in[1]);
 				break;
 			case "exit":
 				System.out.println("You're leaving :c");

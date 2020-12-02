@@ -3,17 +3,6 @@ package com.myProject.Main;
 import com.myProject.Location.*;
 import com.myProject.Main.Tree.Node;
 
-enum location {
-    start,
-    nymphs,
-    sirens,
-    pixies,
-    dwarves,
-    elves,
-    validar,
-    typhon
-}
-
 enum LOCATION {
     FOREST,
     ELFCITY,
@@ -33,6 +22,9 @@ class Tree {
             right = null;
         }
 
+        public Location getLocation() { return location; }
+
+
         @Override
         public String toString() {
             return "Node{" +
@@ -50,8 +42,11 @@ class Tree {
 }
 
 public class Map {
-    Tree tree;
-    Node current;
+    private Tree tree;
+
+    private Node current;
+
+    public Node getCurrent() { return current; }
 
     Map() {
         Location[] locations = new Location[] { new Forest(), new ElfCity(), new Mountain(), new Sea(), new DemonKingdom() };

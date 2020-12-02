@@ -12,7 +12,7 @@ public class StopWatch implements Runnable {
         this.thread.start();
     }
 
-    public int getSeconds() { return (seconds/60); }
+    public int getSeconds() { return seconds; }
     public void setSeconds(int seconds) { this.seconds = seconds; }
 
     @Override
