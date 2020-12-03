@@ -49,10 +49,11 @@ public class Player extends ConcreteObserver {
 	void setHealth(int i) {
 		health = i;
 	}
-	public String toString() { return name; }
-	public Map getMap() { return this.map; }
 	void setDialogue(String s) { dialogue = s; }
 
+	public Map getMap() { return this.map; }
+	public int getTime() { return this.timer.getSeconds(); }
+	public String toString() { return name; }
 	public Location getLocation() { return currentLocation; }
 	public void setLocation(Location loc, Location[] nextLocs) {
 		currentLocation = loc;

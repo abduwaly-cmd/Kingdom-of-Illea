@@ -1,25 +1,26 @@
 package com.myProject.Location;
 
 import com.myProject.Character.Character;
-import com.myProject.Location.forestStrategies.LocInstance;
+import com.myProject.Location.forestStates.LocInstance;
+import com.myProject.Location.forestStates.dayForest;
 
 import java.util.ArrayList;
 
 public class Location {
-	String name;
+	private String name;
 //	Quest quest;
 //	Item [] objects;
 	private Location[] nextLocations = null;
 	private ArrayList<Character> characters;
 
-	Location(String name){
+	public Location(String name){
 		this.name = name;
 //		this.objects = objects;
 //		this.quest = quest;
 	}
 
-	Location(LocInstance inst) {
-		this.name = inst.getName();
+	Location(Location inst) {
+
 	}
 
 	public void setName(String name) { this.name = name; }
