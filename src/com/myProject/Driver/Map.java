@@ -2,8 +2,10 @@ package com.myProject.Driver;
 
 import com.myProject.Location.*;
 import com.myProject.Driver.Tree.Node;
+import com.myProject.Location.locationStrategies.HumanKingdom;
 
 enum LOCATION {
+    KINGDOM,
     FOREST,
     ELFCITY,
     MOUNTAIN,
@@ -41,14 +43,14 @@ public class Map {
     private Node current;
 
     Map() {
-        Location[] locations = new Location[] { new Forest(), new Forest(), new Forest(), new Forest(), new Forest() };
+        Location[] locations = new Location[] { new Location(new HumanKingdom()), new Forest(), new Forest(), new Forest(), new Forest(), new Forest() };
         this.tree = new Tree();
 
-        Node l1 = new Node(locations[LOCATION.FOREST.ordinal()]);
-//      tree.insert(l0, locations[LOCATION.FOREST.ordinal()]);              // Level 1 [Nymphs]
-        this.current = l1;                                                  // Level 1 [Nymphs]
+        Node l0 = new Node(locations[LOCATION.KINGDOM.ordinal()]);
+        tree.insert(l0, locations[LOCATION.FOREST.ordinal()]);              // Level 1 [Nymphs]
+        this.current = l0;                                                  // Level 1 [Nymphs]
 
-//      Node l1 = l0.left;
+        Node l1 = l0.left;
         tree.insert(l1, locations[LOCATION.SEA.ordinal()]);                 // Level 2 [1] - L [Sirens]
         tree.insert(l1, locations[LOCATION.MOUNTAIN.ordinal()]);            // Level 2 [2] - R [Dwarves]
 
@@ -125,3 +127,23 @@ public class Map {
         return current.location;
     }
 }
+
+
+/*
+Kingdom --
+    Description - ...
+    Talk to wizard - ...
+    .... <- wizard's first line
+    take amulet
+    go next location
+ */
+/*
+Forest (day) --
+    Description - ...
+    Talk to nymphs - ...
+    .... <- nymphs first line
+    start mission
+    .... <- nymphs talk again (automatically)
+    take sphere
+    go next location
+ */

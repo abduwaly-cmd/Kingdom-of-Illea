@@ -1,13 +1,12 @@
 package com.myProject.Location.locationStrategies;
 
+import com.myProject.Character.Character;
+import com.myProject.Character.Pixie;
+import com.myProject.Character.Troll;
 import com.myProject.Quests.Quest;
 import com.myProject.Quests.Riddle;
-import com.myProject.Character.*;
-import com.myProject.Character.Character;
 
-import java.util.ArrayList;
-
-public class nightForest implements LocInstance {
+public class DemonKingdomV implements LocInstance {
 
     private final Quest quest;
     private final String name;
@@ -15,7 +14,7 @@ public class nightForest implements LocInstance {
     private final Character enemy;
     private final Character character;
 
-    public nightForest() {
+    public DemonKingdomV() {
         this.name = "Niadale Forest (Night)";
         this.enemy = new Troll();
         this.quest = new Riddle();

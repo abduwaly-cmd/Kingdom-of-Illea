@@ -12,7 +12,7 @@ public class Quest {
     private boolean done;
     private boolean active;
 
-    Quest(String name) {
+    public Quest(String name) {
         this.name = name;
         this.done = false;
         this.state = new defaultState();

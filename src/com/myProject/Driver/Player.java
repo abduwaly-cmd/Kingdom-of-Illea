@@ -81,16 +81,16 @@ public class Player extends ConcreteObserver {
 	public void update(String[] in, Console console) {
 		switch (in[0]) {
 			case "walk":
-				controlPanel.execute(0, console, this, in[1], null);
+				controlPanel.execute(0, console, this, in);
 				break;
 			case "talk":
-				controlPanel.execute(1, console, this, in[1], null);
+				controlPanel.execute(1, console, this, in);
 				break;
 			case "start":
-				controlPanel.execute(2, console, this, null, null);
+				controlPanel.execute(2, console, this, null);
 				break;
 			case "take":
-				controlPanel.execute(3, console, this, in[1], null);
+				controlPanel.execute(3, console, this, in);
 				break;
 			case "test":
 				console.switchTerminaltoSocketInput();
@@ -118,10 +118,8 @@ public class Player extends ConcreteObserver {
 			case "stop":
 			case "use":
 			default:
-				if(prevCommand[0].equals("talk"))
-					controlPanel.execute(1, console, this, prevCommand[1], in);
-				else if(currentLocation.getQuest().isActive())
-					controlPanel.execute(2, console, this, null, in);
+				if(currentLocation.getQuest().isActive())
+					controlPanel.execute(2, console, this, in);
 				else System.out.println("Invalid :c");
 				break;
 		}

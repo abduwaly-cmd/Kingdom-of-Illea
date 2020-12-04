@@ -11,13 +11,11 @@ public class Character {
     private Queue<String> speech;
     private final String name;
     private final String race;
-    private boolean canSpeak;
 
     public Character(String name, String race) {
         this.name = name;
         this.race = race;
         this.health = 100;
-        this.canSpeak = true;
     }
 
     public String speak() { return (!speech.isEmpty()) ? this.name + ": " + speech.remove() : null; }
@@ -26,10 +24,11 @@ public class Character {
     public boolean isCanNotSpeak() { return this.speech.isEmpty(); }
 
     public boolean giveItem(Player player, String itemName) {
-        if(!itemName.toLowerCase().contains(this.items.element().toString())) return false;
-        player.addItem(this.items.remove());
-        player.addItem(this.items.remove());
-        return true;
+        if(this.items.element().toString().toLowerCase().contains(itemName)) {
+            player.addItem(this.items.remove());
+            return true;
+        }
+        return false;
     }
     public void setItems(Queue<Item> items) { this.items = items; }
 

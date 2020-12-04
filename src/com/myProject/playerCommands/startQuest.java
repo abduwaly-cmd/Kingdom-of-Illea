@@ -5,10 +5,7 @@ import com.myProject.Driver.Player;
 
 public class startQuest implements Command {
     @Override
-    public void execute(Console console, Player player, String act) { }
-
-    @Override
-    public void execute(Console console, Player player, String act, String[] in) {
+    public void execute(Console console, Player player, String[] in) {
         player.getLocation().getQuest().nextState(player, in);
     }
 

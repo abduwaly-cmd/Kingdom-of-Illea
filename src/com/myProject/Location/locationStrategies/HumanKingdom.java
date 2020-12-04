@@ -1,26 +1,24 @@
 package com.myProject.Location.locationStrategies;
 
 import com.myProject.Quests.Quest;
-import com.myProject.Quests.Riddle;
 import com.myProject.Character.*;
 import com.myProject.Character.Character;
+import com.myProject.Quests.noQuest;
+import com.myProject.Quests.questState.defaultState;
 
-import java.util.ArrayList;
-
-public class nightForest implements LocInstance {
-
+public class HumanKingdom implements LocInstance {
     private final Quest quest;
     private final String name;
     private final String description;
     private final Character enemy;
     private final Character character;
 
-    public nightForest() {
-        this.name = "Niadale Forest (Night)";
-        this.enemy = new Troll();
-        this.quest = new Riddle();
-        this.character = new Pixie();
-        this.description = "Early morning in the forest eh ;)";
+    public HumanKingdom() {
+        this.name = "Human Kingdom";
+        this.enemy = null;
+        this.quest = new noQuest();
+        this.character = new Wizard();
+        this.description = "Early morning in the Kingdom eh ;)";
     }
 
     @Override

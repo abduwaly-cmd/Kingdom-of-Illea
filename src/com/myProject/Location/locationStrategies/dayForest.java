@@ -13,7 +13,7 @@ public class dayForest implements LocInstance {
     private final String name;
     private final String description;
     private final Character enemy;
-    private final ArrayList<Character> characters = new ArrayList<>();
+    private final Character character;
 
     public dayForest() {
         this.name = "Niadale Forest (Day)";
@@ -21,8 +21,8 @@ public class dayForest implements LocInstance {
         this.quest = new Riddle();
         this.description = "Its a sunny day, and you are resting under an apple tree." +
                 "\nA wizard is approaching you, you can talk to him...";
-        this.characters.add(new Wizard());
-        this.characters.add(new Nymph());
+//        this.character.add(new Wizard());
+        this.character = new Nymph();
     }
 
     @Override
@@ -34,5 +34,5 @@ public class dayForest implements LocInstance {
     @Override
     public String getDescription() { return this.description; }
     @Override
-    public ArrayList<Character> getCharacters() { return this.characters; }
+    public Character getCharacter() { return this.character; }
 }

@@ -10,5 +10,5 @@ public interface LocInstance {
     public String getName();
     public String getDescription();
     public Character getEnemy();
-    public ArrayList<Character> getCharacters();
+    public Character getCharacter();
 }

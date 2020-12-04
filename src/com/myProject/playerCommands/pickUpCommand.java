@@ -5,11 +5,8 @@ import com.myProject.Driver.Player;
 
 public class pickUpCommand implements Command {
     @Override
-    public void execute(Console console, Player player, String act) { }
-
-    @Override
-    public void execute(Console console, Player player, String itemName, String[] in) {
-        player.getLocation().takeItem(player, itemName);
+    public void execute(Console console, Player player, String[] in) {
+        player.getLocation().takeItem(player, in[1]);
     }
 
     @Override
