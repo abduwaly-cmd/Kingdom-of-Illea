@@ -21,9 +21,10 @@ public class Wizard extends Character {
                     "\n\t\tthe evil Typhon! You must collect all 5 spheres in order to save the Kingdom!" +
                     "\nType [yes] to help...");
             speech.add("My prince, here is an amulet to store the spheres in." +
-                    "\nType [take] to take it...");
-            speech.add("Great, now that you have it! I think we better go over to the Nymphs and see whats going on...");
-            speech.add("Oh there the Nymphs are lets see what they're up to...");
+                    "\nType [take amulet] to take it...");
+            speech.add("Great, now that you have it! I think its better for you to head on to the Nymphs and gain the earth sphere." +
+                    "\nYou have arrived at the Nymphs..." +
+                    "\nype [talk to nymphs] to talk…");
         setSpeech(speech);
     }
 
@@ -32,7 +33,7 @@ public class Wizard extends Character {
         if(in == null) return super.talk(null);
         else if(in[0].equals("yes")) {
             nextSpeech();
-            return talk(in);
+            return super.talk(null);
         } else
             return "Oh... Thats a bummer :/";
     }

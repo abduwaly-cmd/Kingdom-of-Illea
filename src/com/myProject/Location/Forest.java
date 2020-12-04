@@ -1,13 +1,9 @@
 package com.myProject.Location;
 
-import com.myProject.Character.Character;
-import com.myProject.Location.forestStrategies.dayForest;
-import com.myProject.Location.forestStrategies.nightForest;
-
-import java.util.ArrayList;
+import com.myProject.Location.locationStrategies.dayForest;
+import com.myProject.Location.locationStrategies.nightForest;
 
 public class Forest extends Location {
-	private Location instance;
 
 	public Forest() {
 		super(new dayForest());

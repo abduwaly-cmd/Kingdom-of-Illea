@@ -1,4 +1,4 @@
-package com.myProject.Location.forestStrategies;
+package com.myProject.Location.locationStrategies;
 
 import com.myProject.Quests.Quest;
 import com.myProject.Quests.Riddle;

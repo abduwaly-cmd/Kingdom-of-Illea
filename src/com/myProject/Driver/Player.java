@@ -6,10 +6,7 @@ import com.myProject.Location.Location;
 import com.myProject.Observer.*;
 import com.myProject.Quests.Quest;
 import com.myProject.Timer.StopWatch;
-import com.myProject.playerCommands.Command;
-import com.myProject.playerCommands.ControlPanel;
-import com.myProject.playerCommands.talkToCommand;
-import com.myProject.playerCommands.walkToLoc;
+import com.myProject.playerCommands.*;
 
 import java.util.ArrayList;
 
@@ -43,13 +40,13 @@ public class Player extends ConcreteObserver {
 		this.reading = true;
 		this.items.add(new Sword());
 		this.currentQuest = null;
-		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand()};
+		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand(), new startQuest(), new pickUpCommand()};
 		this.controlPanel = new ControlPanel(cmds);
 		setLocation(this.map.getCurrentLocation(), this.map.getNext());
 //		soundPlayer = new SoundPlayer(this.currentLocation.getSoundFile());
 //		soundPlayer.change(this.currentLocation.getSoundFile());
 	}
-	
+
 	public static synchronized Player getInstance(Subject subject, String name) {
 		if (instance == null)
 			instance = new Player(subject, name);
@@ -63,8 +60,13 @@ public class Player extends ConcreteObserver {
 	public Location getLocation() { return currentLocation; }
 	public ArrayList<Item> getItems() { return this.items; }
 	public void addItem(Item item) {
-		if(item.toString().contains("sphere")) this.spheres.add(item);
-		else this.items.add(item);
+		if(item.toString().contains("sphere")) {
+			this.spheres.add(item);
+			System.out.println("This " + item + " has been added to your amulet...");
+		} else {
+			this.items.add(item);
+			System.out.println("This " + item + " has been added to your inventory...");
+		}
 	}
 	public void setLocation(Location loc, Location[] nextLocs) {
 		currentLocation = loc;
@@ -79,13 +81,16 @@ public class Player extends ConcreteObserver {
 	public void update(String[] in, Console console) {
 		switch (in[0]) {
 			case "walk":
-				controlPanel.execute(0, console, this, in[1]);
+				controlPanel.execute(0, console, this, in[1], null);
 				break;
 			case "talk":
 				controlPanel.execute(1, console, this, in[1], null);
 				break;
 			case "start":
-				controlPanel.execute(2, console, this, in[1], null);
+				controlPanel.execute(2, console, this, null, null);
+				break;
+			case "take":
+				controlPanel.execute(3, console, this, in[1], null);
 				break;
 			case "test":
 				console.switchTerminaltoSocketInput();

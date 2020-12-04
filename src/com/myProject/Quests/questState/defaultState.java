@@ -11,6 +11,7 @@ public class defaultState implements State {
     public void next(Quest quest, Player player, String[] str) {
         quest.setActive(true);
         quest.setState(quest.getNextState());
+        quest.getState().printStatus();
     }
 
     @Override

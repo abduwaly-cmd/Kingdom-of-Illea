@@ -1,4 +1,4 @@
-package com.myProject.Location.forestStrategies;
+package com.myProject.Location.locationStrategies;
 
 import com.myProject.Character.Nymph;
 import com.myProject.Character.Wizard;

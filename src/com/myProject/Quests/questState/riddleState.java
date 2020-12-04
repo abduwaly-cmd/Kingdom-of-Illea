@@ -7,10 +7,9 @@ public class riddleState implements State {
     private String ans;
     private String riddle;
 
-    public riddleState(String ans, String riddle) {
+    public riddleState(String riddle, String ans) {
         this.ans = ans;
         this.riddle = riddle;
-        printStatus();
     }
 
     @Override
@@ -18,7 +17,7 @@ public class riddleState implements State {
 
     @Override
     public void next(Quest quest, Player player, String[] str) {
-        if(str[0].equals(this.ans)) player.getLocation().setQuestDone("Nymph");
+        if(str[0].equals(this.ans)) player.getLocation().setQuestDone("nymph");
         else System.out.println("wrong answer, try again...");
     }
 
