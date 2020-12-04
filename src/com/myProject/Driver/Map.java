@@ -41,7 +41,7 @@ public class Map {
     private Node current;
 
     Map() {
-        Location[] locations = new Location[] { new Forest(), new ElfCity(), new Mountain(), new Sea(), new DemonKingdom() };
+        Location[] locations = new Location[] { new Forest(), new Forest(), new Forest(), new Forest(), new Forest() };
         this.tree = new Tree();
 
         Node l1 = new Node(locations[LOCATION.FOREST.ordinal()]);

@@ -32,7 +32,12 @@ public class Console extends ConcreteSubject implements Runnable {
 
     @Override
     public void run() {
-        while(running)
-            notifyObservers(inputStream.getInput(), this);
+        while(running) {
+            try {
+                notifyObservers(inputStream.getInput(), this);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

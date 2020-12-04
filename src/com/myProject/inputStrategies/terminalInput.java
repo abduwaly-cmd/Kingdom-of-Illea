@@ -33,6 +33,9 @@ public class terminalInput implements inputStream {
         else if(inputArr[0].equals("use")) {
             out = new String[] { "use", userInput.substring(4)};
         }
+        else if(inputArr[0].equals("inv")) {
+            out = new String[] { "inventory" };
+        }
         //checks if the length is 2, first word is "walk" and sets the output to "walk", "...."
         else if(inputArr.length == 2 && inputArr[0].equals("walk")) {
             out = new String[] { "walk", inputArr[1]};
@@ -42,7 +45,7 @@ public class terminalInput implements inputStream {
         }
         //checks if the length is 2 or more, first word is "talk", second is "to" and sets the output to "talk", "...."
         else if(inputArr.length >= 2 && inputArr[0].equals("talk") && inputArr[1].equals("to")) {
-            out = new String[] { "talk", userInput.substring(8) };
+            out = new String[] { "talk", inputArr[2] };
         } else {
             out = inputArr;
         }
@@ -50,11 +53,12 @@ public class terminalInput implements inputStream {
     }
 
     @Override
-    public String[] getInput() {
+    public String[] getInput() throws InterruptedException {
+        Thread.sleep(100);
         String userInput;
+        System.out.println();
         System.out.print("> ");
         userInput = in.nextLine();
-        System.out.println();
 
         //checks if the input is equal to the codeword and sets the output to "start"
         return parseInput(userInput);
