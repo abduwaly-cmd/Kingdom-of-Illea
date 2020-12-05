@@ -1,4 +1,4 @@
-package com.myProject.inputStrategies;
+package com.myProject.Driver.inputStrategies;
 
 import java.util.Scanner;
 
@@ -14,10 +14,6 @@ public class terminalInput implements inputStream {
 
         if (userInput.equals(" ")) {
             out = new String[] {"someThing that the input string equals"};
-        }
-        //checks if input is equal to the "mischief managed" and sets the output to "stop"
-        else if(userInput.equals("test")) {
-            out = new String[] {"test"};
         }
         else if(inputArr.length >= 1 && inputArr[0].equals("take")) {
             out = new String[] { "take", inputArr[1] };
@@ -38,6 +34,9 @@ public class terminalInput implements inputStream {
         }
         else if(inputArr[0].equals("inv")) {
             out = new String[] { "inventory" };
+        }
+        else if(inputArr[0].equals("test")) {
+            out = new String[] { "test" };
         }
         //checks if the length is 2, first word is "walk" and sets the output to "walk", "...."
         else if(inputArr.length == 2 && inputArr[0].equals("walk")) {

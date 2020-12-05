@@ -13,6 +13,5 @@ public class Riddle extends Quest {
     @Override
     public void setDone() {
         super.setDone();
-        System.out.println();
     }
 }

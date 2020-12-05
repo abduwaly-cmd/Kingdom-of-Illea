@@ -1,4 +1,4 @@
-package com.myProject.playerCommands;
+package com.myProject.Driver.playerCommands;
 
 import com.myProject.Driver.Console;
 import com.myProject.Driver.Player;

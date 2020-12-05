@@ -4,8 +4,6 @@ import com.myProject.Driver.Player;
 import com.myProject.Quests.Quest;
 
 public class defaultState implements State {
-    @Override
-    public void next(Quest quest) { }
 
     @Override
     public void next(Quest quest, Player player, String[] str) {
@@ -15,7 +13,5 @@ public class defaultState implements State {
     }
 
     @Override
-    public void printStatus() {
-
-    }
+    public void printStatus() { }
 }

@@ -2,7 +2,7 @@ package com.myProject.Driver;
 
 
 import com.myProject.Observer.*;
-import com.myProject.inputStrategies.*;
+import com.myProject.Driver.inputStrategies.*;
 import java.util.Scanner;
 
 public class Console extends ConcreteSubject implements Runnable {

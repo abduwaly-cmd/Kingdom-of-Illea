@@ -10,9 +10,9 @@ public class Main {
 			//	console.removeObserver(TCP_Session);
 			//	console.setSocket(TCP_Session.getHost(), TCP_Session.getPort());
 
-		// 192.168.1.101 60048
+		// 192.168.1.101 65409
 		// console.setSocket(TCP_Session.getHost(), TCP_Session.getPort());
-		console.setSocket("192.168.1.101", 60048);
+		console.setSocket("192.168.1.101", 65409);
 		Player chrom = Player.getInstance(console, "Chrom");
 	}
 }

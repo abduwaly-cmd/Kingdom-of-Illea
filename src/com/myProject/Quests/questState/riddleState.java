@@ -13,16 +13,11 @@ public class riddleState implements State {
     }
 
     @Override
-    public void next(Quest quest) { }
-
-    @Override
     public void next(Quest quest, Player player, String[] str) {
         if(str[0].equals(this.ans)) player.getLocation().setQuestDone("nymph");
         else System.out.println("wrong answer, try again...");
     }
 
     @Override
-    public void printStatus() {
-        System.out.println(riddle);
-    }
+    public void printStatus() { System.out.println(riddle); }
 }

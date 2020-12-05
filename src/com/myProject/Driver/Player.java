@@ -6,9 +6,10 @@ import com.myProject.Location.Location;
 import com.myProject.Observer.*;
 import com.myProject.Quests.Quest;
 import com.myProject.Timer.StopWatch;
-import com.myProject.playerCommands.*;
+import com.myProject.Driver.playerCommands.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //enum commands {
 //	walk(0),
@@ -56,7 +57,6 @@ public class Player extends ConcreteObserver {
 	public Map getMap() { return this.map; }
 	public int getTime() { return this.timer.getSeconds(); }
 	public String toString() { return name; }
-	public Item getLatestItem() { return this.items.get(this.items.size() - 1); }
 	public Location getLocation() { return currentLocation; }
 	public ArrayList<Item> getItems() { return this.items; }
 	public void addItem(Item item) {
@@ -75,7 +75,8 @@ public class Player extends ConcreteObserver {
 		currentLocation.setNextLocations(nextLocs);
 	}
 
-	public void switchTalking() { this.reading = !this.reading; }
+	public void switchConsoleToSocket() { switchConsoleToSocket(); }
+	public void switchConsoleToTerminal() { switchConsoleToTerminal(); }
 
 	@Override
 	public void update(String[] in, Console console) {
@@ -104,17 +105,24 @@ public class Player extends ConcreteObserver {
 				System.out.println("TOMATO POTATO");
 				break;
 			case "socket":
-				System.out.println("interesting...");
+				System.out.print("Testing :)");
 				//currentQuest.update(console, in[1]);
-				System.out.println(in[1]);
-				console.switchSockettoTerminalInput();
+				System.out.println("\t> " + Arrays.toString(in));
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				//console.switchSockettoTerminalInput();
 				break;
 			case "watch":
 				System.out.println(this.timer.getSeconds());
 				break;
 			case "inventory":
+				if(items.isEmpty()) System.out.println("Your inventory is empty :)");
 				for(Item item: items)
 					System.out.print("\t> " + item.toString());
+				break;
 			case "stop":
 			case "use":
 			default:
