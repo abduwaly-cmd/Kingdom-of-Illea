@@ -63,19 +63,6 @@ public class socketInput implements inputStream, Runnable {
         }
     }
 
-//    {
-//        "identifierForVendor" : "2DF077FE-6213-4F98-B8DA-F2A47F31A876",
-//            "logSampleNr" : "12225"
-//            "loggingTime" : "2020-12-05 07:09:26.933 +0400",
-//            "locationHeadingX" : "109.162506",
-//            "locationHeadingY" : "-23.078491",
-//            "locationHeadingZ" : "-87.419510",
-//            "locationTrueHeading" : "-1.000000",
-//            "locationHeadingAccuracy" : "22.758072",
-//            "locationMagneticHeading" : "204.039124",
-//            "locationHeadingTimestamp_since1970" : "1607137766.913342",
-//    }
-
     private String getSwinging(double xAcc, double yAcc) {
         if(xAcc < -1) return "Retreating";
         else if(yAcc > 2) return "Swinging";
