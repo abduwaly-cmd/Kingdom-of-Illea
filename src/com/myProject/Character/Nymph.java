@@ -22,7 +22,7 @@ public class Nymph extends Character {
                     "\nType [start] to initiate mission");
             speech.add("Correct!" +
                     "\nType [take sphere] to obtain " + getItem() + " and add it to your inventory!");
-            speech.add("Thanks for your help mate :)");
+            speech.add("Thank you for your help young prince....");
         setSpeech(speech);
     }
 

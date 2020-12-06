@@ -1,4 +1,4 @@
-package com.myProject.Character;
+ package com.myProject.Character;
 
 import com.myProject.Items.Amulet;
 import com.myProject.Items.Item;
