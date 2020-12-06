@@ -5,7 +5,7 @@ import com.myProject.Driver.Player;
 
 public class startQuest implements Command {
     @Override
-    public void execute(Console console, Player player, String[] in) {
+    public void execute(Console console, Player player, String[] in) throws InterruptedException {
         player.getLocation().getQuest().nextState(player, in);
     }
 

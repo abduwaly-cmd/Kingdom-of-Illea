@@ -18,11 +18,13 @@ public class Character {
         this.health = 100;
     }
 
-    public String speak() { return (!speech.isEmpty()) ? this.name + ": " + speech.remove() : null; }
-    public String talk(String[] in) { return (!speech.isEmpty()) ? this.name + ": " + speech.element() : null; }
+    public Character(String name, String race, int health) {
+        this.name = name;
+        this.race = race;
+        this.health = health;
+    }
 
-    public boolean isCanNotSpeak() { return this.speech.isEmpty(); }
-
+    // The character gives up its item and adds it to the player
     public boolean giveItem(Player player, String itemName) {
         if(this.items.element().toString().toLowerCase().contains(itemName)) {
             player.addItem(this.items.remove());
@@ -30,16 +32,19 @@ public class Character {
         }
         return false;
     }
-    public void setItems(Queue<Item> items) { this.items = items; }
+    //public String talk(String[] in) { return (!speech.isEmpty()) ? this.name + ": " + speech.element() : null; }
 
-    public void setSpeech(Queue<String> speech) { this.speech = speech; }
-    public void nextSpeech() { String l = this.speech.remove(); }
+    // Getters
     public Item getItem() { return this.items.element(); }
+    public String speak() { return (!speech.isEmpty()) ? this.name + ": " + speech.remove() : null; }
+    public String getRace() { return this.race; }
+    public boolean isCanNotSpeak() { return this.speech.isEmpty(); }
 
-    public String  getRace() { return this.race; }
-
+    // Setters
+    //public void nextSpeech() { String l = this.speech.remove(); }
+    public void setItems(Queue<Item> items) { this.items = items; }
+    public void setSpeech(Queue<String> speech) { this.speech = speech; }
 
     @Override
     public String toString() { return name; }
-
 }

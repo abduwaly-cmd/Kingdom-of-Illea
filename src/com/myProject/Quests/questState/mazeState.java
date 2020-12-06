@@ -27,7 +27,7 @@ public class mazeState implements State {
     }
 
     @Override
-    public void next(Quest quest, Player player, String[] str) {
+    public void next(Quest quest, Player player, String[] str) throws InterruptedException {
         if(str[0].equals("socket")) {
             if(path.isEmpty()) {
                 player.getLocation().setQuestDone("dwarf");
@@ -36,6 +36,7 @@ public class mazeState implements State {
                 path.remove();
                 printPath();
             } else {
+                quest.setActive(false);
                 System.out.println("You Lost the dwarf :c");
                 quest.setState(new defaultState());
                 System.out.println("Type [start] to try Again");
@@ -45,11 +46,7 @@ public class mazeState implements State {
             player.switchConsoleToSocket();
             printPath();
         }
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(1000);
     }
 
     @Override

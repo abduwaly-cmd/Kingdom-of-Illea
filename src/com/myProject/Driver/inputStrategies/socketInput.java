@@ -29,9 +29,7 @@ public class socketInput implements inputStream, Runnable {
     }
 
     @Override
-    public synchronized String[] getInput() {
-        return this.out;
-    }
+    public synchronized String[] getInput() { return this.out; }
 
     @Override
     public void run() {

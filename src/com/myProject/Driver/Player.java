@@ -26,6 +26,7 @@ public class Player extends ConcreteObserver {
 	private Quest currentQuest;
 	private String name;
 	private String dialogue;
+	private Console console;
 	private boolean reading;
 	private String[] prevCommand;
 	private Location currentLocation;
@@ -36,12 +37,13 @@ public class Player extends ConcreteObserver {
 	private ArrayList<Item> spheres = new ArrayList<>();
 	private static Player instance;
 
-	private Player(Subject subject, String name) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-		super(subject);
+	private Player(Console console, String name) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+		super((Subject) console);
 		this.map = new Map();
 		this.name = name;
 		this.timer = new StopWatch();
 		this.reading = true;
+		this.console = console;
 		this.items.add(new Sword());
 		this.currentQuest = null;
 		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand(), new startQuest(), new pickUpCommand()};
@@ -50,9 +52,9 @@ public class Player extends ConcreteObserver {
 		soundPlayer = new SoundPlayer(this.currentLocation.getSoundFile());
 	}
 
-	public static synchronized Player getInstance(Subject subject, String name) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+	public static synchronized Player getInstance(Console console, String name) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		if (instance == null)
-			instance = new Player(subject, name);
+			instance = new Player(console, name);
 		return instance;
 	}
 
@@ -78,8 +80,8 @@ public class Player extends ConcreteObserver {
 		currentLocation.setNextLocations(nextLocs);
 	}
 
-	public void switchConsoleToSocket() { switchConsoleToSocket(); }
-	public void switchConsoleToTerminal() { switchConsoleToTerminal(); }
+	public void switchConsoleToSocket() { console.switchTerminaltoSocketInput(); }
+	public void switchConsoleToTerminal() { console.switchSockettoTerminalInput(); }
 
 	@Override
 	public void update(String[] in, Console console) {
@@ -108,15 +110,16 @@ public class Player extends ConcreteObserver {
 				System.out.println("TOMATO POTATO");
 				break;
 			case "socket":
-				System.out.print("Testing :)");
+				if(currentLocation.getQuest().isActive())
+					controlPanel.execute(2, console, this, in);
+				//System.out.print("Testing :)");
 				//currentQuest.update(console, in[1]);
-				System.out.println("\t> " + Arrays.toString(in));
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				//console.switchSockettoTerminalInput();
+				//System.out.println("\t> " + Arrays.toString(in));
+				//try {
+				//	Thread.sleep(100);
+				//} catch (InterruptedException e) {
+				//	e.printStackTrace();
+				//}
 				break;
 			case "watch":
 				System.out.println(this.timer.getSeconds());

@@ -26,7 +26,7 @@ public class Quest {
     public void printStatus() { state.printStatus(); }
     public void setState(State state) { this.state = state; }
     public void setNextState(State state) { this.next = state; }
-    public void nextState(Player player, String[] in) { state.next(this, player, in);}
+    public void nextState(Player player, String[] in) throws InterruptedException { state.next(this, player, in);}
     public void setActive(boolean state) { this.active = state; }
 
     public void setDone() {
