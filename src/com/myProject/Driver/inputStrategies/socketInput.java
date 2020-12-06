@@ -35,9 +35,7 @@ public class socketInput implements inputStream, Runnable {
 
     @Override
     public void run() {
-        String face;
         String line;
-        String heading;
         try {
             this.socket = new Socket(host, port);
             InputStream input = socket.getInputStream();

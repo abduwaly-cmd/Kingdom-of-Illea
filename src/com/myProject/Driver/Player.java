@@ -8,6 +8,9 @@ import com.myProject.Quests.Quest;
 import com.myProject.Timer.StopWatch;
 import com.myProject.Driver.playerCommands.*;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -27,13 +30,13 @@ public class Player extends ConcreteObserver {
 	private String[] prevCommand;
 	private Location currentLocation;
 	private StopWatch timer;
-//	private SoundPlayer soundPlayer;
+	private SoundPlayer soundPlayer;
 	private ControlPanel controlPanel;
 	private ArrayList<Item> items = new ArrayList<>();
 	private ArrayList<Item> spheres = new ArrayList<>();
 	private static Player instance;
 
-	private Player(Subject subject, String name) {
+	private Player(Subject subject, String name) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		super(subject);
 		this.map = new Map();
 		this.name = name;
@@ -44,11 +47,10 @@ public class Player extends ConcreteObserver {
 		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand(), new startQuest(), new pickUpCommand()};
 		this.controlPanel = new ControlPanel(cmds);
 		setLocation(this.map.getCurrentLocation(), this.map.getNext());
-//		soundPlayer = new SoundPlayer(this.currentLocation.getSoundFile());
-//		soundPlayer.change(this.currentLocation.getSoundFile());
+		soundPlayer = new SoundPlayer(this.currentLocation.getSoundFile());
 	}
 
-	public static synchronized Player getInstance(Subject subject, String name) {
+	public static synchronized Player getInstance(Subject subject, String name) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		if (instance == null)
 			instance = new Player(subject, name);
 		return instance;
@@ -68,9 +70,10 @@ public class Player extends ConcreteObserver {
 			System.out.println("This " + item + " has been added to your inventory...");
 		}
 	}
-	public void setLocation(Location loc, Location[] nextLocs) {
+	public void setLocation(Location loc, Location[] nextLocs) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		currentLocation = loc;
 		System.out.println("You are now in " + currentLocation);
+		soundPlayer.change(this.currentLocation.getSoundFile());
 		System.out.println(currentLocation.printDescription());
 		currentLocation.setNextLocations(nextLocs);
 	}
@@ -109,7 +112,7 @@ public class Player extends ConcreteObserver {
 				//currentQuest.update(console, in[1]);
 				System.out.println("\t> " + Arrays.toString(in));
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

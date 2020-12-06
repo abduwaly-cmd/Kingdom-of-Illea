@@ -12,6 +12,7 @@ public class nightForest implements LocInstance {
     private final Quest quest;
     private final String name;
     private final String description;
+    private final String soundFile;
     private final Character enemy;
     private final Character character;
 
@@ -19,6 +20,7 @@ public class nightForest implements LocInstance {
         this.name = "Niadale Forest (Night)";
         this.enemy = new Troll();
         this.quest = new Riddle();
+        this.soundFile = "";
         this.character = new Pixie();
         this.description = "Early morning in the forest eh ;)";
     }
@@ -29,6 +31,8 @@ public class nightForest implements LocInstance {
     public String getName() { return this.name; }
     @Override
     public Character getEnemy() { return this.enemy; }
+    @Override
+    public String getSoundFile() { return this.soundFile; }
     @Override
     public String getDescription() { return this.description; }
     @Override
