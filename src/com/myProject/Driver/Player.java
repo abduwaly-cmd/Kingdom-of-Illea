@@ -8,11 +8,9 @@ import com.myProject.Quests.Quest;
 import com.myProject.Timer.StopWatch;
 import com.myProject.Driver.playerCommands.*;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 //enum commands {
 //	walk(0),
@@ -84,22 +82,22 @@ public class Player extends ConcreteObserver {
 	public void switchConsoleToTerminal() { console.switchSockettoTerminalInput(); }
 
 	@Override
-	public void update(String[] in, Console console) {
+	public void update(String[] in) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
 		switch (in[0]) {
 			case "walk":
-				controlPanel.execute(0, console, this, in);
+				controlPanel.execute(0, this, in);
 				break;
 			case "talk":
-				controlPanel.execute(1, console, this, in);
+				controlPanel.execute(1, this, in);
 				break;
 			case "start":
-				controlPanel.execute(2, console, this, null);
+				controlPanel.execute(2, this, null);
 				break;
 			case "take":
-				controlPanel.execute(3, console, this, in);
+				controlPanel.execute(3, this, in);
 				break;
 			case "test":
-				console.switchTerminaltoSocketInput();
+				switchConsoleToSocket();
 				break;
 			case "exit":
 				System.out.println("You're leaving :c");
@@ -111,7 +109,7 @@ public class Player extends ConcreteObserver {
 				break;
 			case "socket":
 				if(currentLocation.getQuest().isActive())
-					controlPanel.execute(2, console, this, in);
+					controlPanel.execute(2, this, in);
 				//System.out.print("Testing :)");
 				//currentQuest.update(console, in[1]);
 				//System.out.println("\t> " + Arrays.toString(in));
@@ -133,7 +131,7 @@ public class Player extends ConcreteObserver {
 			case "use":
 			default:
 				if(currentLocation.getQuest().isActive())
-					controlPanel.execute(2, console, this, in);
+					controlPanel.execute(2, this, in);
 				else System.out.println("Invalid :c");
 				break;
 		}

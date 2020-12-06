@@ -1,6 +1,8 @@
 package com.myProject.Observer;
-import com.myProject.Driver.Console;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ConcreteSubject implements Subject {
@@ -23,8 +25,8 @@ public class ConcreteSubject implements Subject {
     }
 
     @Override
-    public void notifyObservers(String[] in, Console console) {
+    public void notifyObservers(String[] in) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
         for (Observer observer : observers)
-            observer.update(in, console);
+            observer.update(in);
     }
 }

@@ -1,7 +1,6 @@
 package com.myProject.Driver.playerCommands;
 
 import com.myProject.Location.Location;
-import com.myProject.Driver.Console;
 import com.myProject.Driver.Player;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -10,7 +9,7 @@ import java.io.IOException;
 
 public class walkToLoc implements Command {
     @Override
-    public void execute(Console console, Player player, String[] act) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public void execute(Player player, String[] act) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         if(player.getLocation().isObjDone()) {
             Location nextLoc = player.getMap().next(act[1]);
             if (nextLoc.toString().toLowerCase().contains("forest")) nextLoc.switchInstance();

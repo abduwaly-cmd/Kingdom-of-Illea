@@ -3,6 +3,10 @@ package com.myProject.Driver;
 
 import com.myProject.Observer.*;
 import com.myProject.Driver.inputStrategies.*;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Console extends ConcreteSubject implements Runnable {
@@ -34,8 +38,8 @@ public class Console extends ConcreteSubject implements Runnable {
     public void run() {
         while(running) {
             try {
-                notifyObservers(inputStream.getInput(), this);
-            } catch (InterruptedException e) {
+                notifyObservers(inputStream.getInput());
+            } catch (InterruptedException | LineUnavailableException | IOException | UnsupportedAudioFileException e) {
                 e.printStackTrace();
             }
         }

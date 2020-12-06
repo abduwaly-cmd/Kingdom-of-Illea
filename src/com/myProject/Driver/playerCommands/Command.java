@@ -8,6 +8,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public interface Command {
-   void execute(Console console, Player player, String[] act) throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException;
+   void execute(Player player, String[] act) throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException;
    void undo();
 }

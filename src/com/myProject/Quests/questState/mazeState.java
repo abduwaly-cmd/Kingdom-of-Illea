@@ -50,7 +50,5 @@ public class mazeState implements State {
     }
 
     @Override
-    public void printStatus() {
-        System.out.println("Follow the dwarf through this maze to catch him!");
-    }
+    public void printStatus() { System.out.println("Follow the dwarf through this maze to catch him!"); }
 }

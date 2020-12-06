@@ -1,7 +1,11 @@
 package com.myProject.Observer;
-import com.myProject.Driver.Console;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
 public interface Subject {
-    void registerObserver(Observer o);
     void removeObserver(Observer o);
-    void notifyObservers(String[] a, Console console);
+    void registerObserver(Observer o);
+    void notifyObservers(String[] a) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException;
 }

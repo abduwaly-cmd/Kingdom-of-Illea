@@ -57,7 +57,7 @@ public class TCP_Client extends ConcreteObserver implements Runnable {
     public synchronized boolean isConnected() { return connected; }
 
     @Override
-    public void update(String[] in, Console console) {
+    public void update(String[] in) {
         if(in.length == 2) {
             this.host = in[0];
             this.port = Integer.parseInt(in[1]);
