@@ -66,10 +66,10 @@ public class socketInput implements inputStream, Runnable {
     }
 
     private String getHeading(double mHead) {
-        if(mHead >= 315 || mHead < 45) return "North";
-        else if(mHead >= 45 || mHead < 135) return "East";
-        else if(mHead >= 135 || mHead < 225) return "South";
-        else return "West";
+        if(mHead >= 45 && mHead < 135) return "East";
+        else if(mHead >= 135 && mHead < 225) return "South";
+        else if(mHead >= 225 && mHead < 315) return "West";
+        else return "North";
     }
 
     private String getFace(double xAcc, double zAcc) {

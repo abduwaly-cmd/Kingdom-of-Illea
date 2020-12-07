@@ -19,7 +19,7 @@ public class DemonKingdomV implements LocInstance {
         this.name = "Niadale Forest (Night)";
         this.enemy = new Troll();
         this.quest = new Riddle();
-        this.soundFile = "";
+        this.soundFile = "Demon Kingdom";
         this.character = new Pixie();
         this.description = "Early morning in the forest eh ;)";
     }

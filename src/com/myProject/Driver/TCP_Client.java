@@ -33,9 +33,7 @@ public class TCP_Client extends ConcreteObserver implements Runnable {
         } catch (UnknownHostException e) {
             System.out.println("[Socket] Wrong IP & Address :/ " + e.getMessage());
             e.printStackTrace();
-        } catch (IOException ex) {
-            System.out.println("[Socket] I/O error: " + ex.getMessage());
-        }
+        } catch (IOException ignored) { }
         System.out.print("[Socket] Enter IP & Port Again plz.. [IP Port] >");
         return false;
     }

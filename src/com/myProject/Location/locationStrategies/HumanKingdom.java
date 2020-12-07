@@ -4,7 +4,6 @@ import com.myProject.Quests.Quest;
 import com.myProject.Character.*;
 import com.myProject.Character.Character;
 import com.myProject.Quests.noQuest;
-import com.myProject.Quests.questState.defaultState;
 
 public class HumanKingdom implements LocInstance {
     private final Quest quest;
@@ -18,7 +17,7 @@ public class HumanKingdom implements LocInstance {
         this.name = "Human Kingdom";
         this.enemy = null;
         this.quest = new noQuest();
-        this.soundFile = "";
+        this.soundFile = "Kingdom";
         this.character = new Wizard();
         this.description = "Early morning in the Kingdom eh ;)";
     }

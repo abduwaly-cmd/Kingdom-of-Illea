@@ -8,6 +8,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class walkToLoc implements Command {
+
     @Override
     public void execute(Player player, String[] act) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         if(player.getLocation().isObjDone()) {

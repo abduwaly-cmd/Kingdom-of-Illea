@@ -11,6 +11,7 @@ import com.myProject.Driver.playerCommands.*;
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //enum commands {
 //	walk(0),
@@ -73,7 +74,8 @@ public class Player extends ConcreteObserver {
 	public void setLocation(Location loc, Location[] nextLocs) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		currentLocation = loc;
 		System.out.println("You are now in " + currentLocation);
-		soundPlayer.change(this.currentLocation.getSoundFile());
+		if(soundPlayer != null)
+			soundPlayer.change(this.currentLocation.getSoundFile());
 		System.out.println(currentLocation.printDescription());
 		currentLocation.setNextLocations(nextLocs);
 	}
@@ -108,16 +110,16 @@ public class Player extends ConcreteObserver {
 				System.out.println("TOMATO POTATO");
 				break;
 			case "socket":
-				if(currentLocation.getQuest().isActive())
-					controlPanel.execute(2, this, in);
+//				if(currentLocation.getQuest().isActive())
+//					controlPanel.execute(2, this, in);
 				//System.out.print("Testing :)");
 				//currentQuest.update(console, in[1]);
-				//System.out.println("\t> " + Arrays.toString(in));
-				//try {
-				//	Thread.sleep(100);
-				//} catch (InterruptedException e) {
-				//	e.printStackTrace();
-				//}
+				System.out.println("\t> " + Arrays.toString(in));
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				break;
 			case "watch":
 				System.out.println(this.timer.getSeconds());

@@ -3,6 +3,8 @@ package com.myProject.Driver;
 import com.myProject.Location.*;
 import com.myProject.Driver.Tree.Node;
 import com.myProject.Location.locationStrategies.HumanKingdom;
+import com.myProject.Location.locationStrategies.Mountain;
+import com.myProject.Location.locationStrategies.Sea;
 
 enum LOCATION {
     KINGDOM,
@@ -27,9 +29,7 @@ class Tree {
         public Location getLocation() { return location; }
 
         @Override
-        public String toString() {
-            return location.toString();
-        }
+        public String toString() { return location.toString(); }
     }
 
     public void insert(Node node, Location location) {
@@ -43,7 +43,7 @@ public class Map {
     private Node current;
 
     Map() {
-        Location[] locations = new Location[] { new Location(new HumanKingdom()), new Forest(), new Forest(), new Forest(), new Forest(), new Forest() };
+        Location[] locations = new Location[] { new Location(new HumanKingdom()), new Forest(), new Location(new Mountain()), new Location(new Mountain()), new Location(new Sea()), new DemonKingdom() };
         this.tree = new Tree();
 
         Node l0 = new Node(locations[LOCATION.KINGDOM.ordinal()]);

@@ -1,12 +1,9 @@
 package com.myProject.Location.locationStrategies;
 
 import com.myProject.Character.Nymph;
-import com.myProject.Character.Wizard;
 import com.myProject.Character.Character;
 import com.myProject.Quests.Quest;
 import com.myProject.Quests.Riddle;
-
-import java.util.ArrayList;
 
 public class dayForest implements LocInstance {
     private final Quest quest;
@@ -20,10 +17,10 @@ public class dayForest implements LocInstance {
         this.name = "Niadale Forest (Day)";
         this.enemy = null;
         this.quest = new Riddle();
-        this.soundFile = "";
+        this.soundFile = "Nidala Forest (Day)";
         this.description = "Its a sunny day, and you are resting under an apple tree." +
                 "\nA wizard is approaching you, you can talk to him...";
-//        this.character.add(new Wizard());
+        // this.character.add(new Wizard());
         this.character = new Nymph();
     }
 

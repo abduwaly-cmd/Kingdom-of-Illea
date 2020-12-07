@@ -61,7 +61,7 @@ public class Location {
 	}
 	// checks and sets the current location to done so the player can move forward to the next locations
 	public void setDone() {
-		if(!this.quest.isDone() || !this.npc.isCanNotSpeak()) return;
+		if(!this.quest.isDone()) return;
 		this.objDone = true;
 		if(nextLocations == null);
 		else if(nextLocations.length == 2)

@@ -5,8 +5,6 @@ import com.myProject.Quests.Riddle;
 import com.myProject.Character.*;
 import com.myProject.Character.Character;
 
-import java.util.ArrayList;
-
 public class nightForest implements LocInstance {
 
     private final Quest quest;
@@ -20,7 +18,7 @@ public class nightForest implements LocInstance {
         this.name = "Niadale Forest (Night)";
         this.enemy = new Troll();
         this.quest = new Riddle();
-        this.soundFile = "";
+        this.soundFile = "Nidala Forest (Night)";
         this.character = new Pixie();
         this.description = "Early morning in the forest eh ;)";
     }

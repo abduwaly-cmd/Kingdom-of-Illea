@@ -27,15 +27,4 @@ public class Wizard extends Character {
                     "\nype [talk to nymphs] to talk…");
         setSpeech(speech);
     }
-
-    @Override
-    public String talk(String[] in) {
-        if(in == null) return super.talk(null);
-        else if(in[0].equals("yes")) {
-            nextSpeech();
-            return super.talk(null);
-        } else
-            return "Oh... Thats a bummer :/";
-    }
-
 }

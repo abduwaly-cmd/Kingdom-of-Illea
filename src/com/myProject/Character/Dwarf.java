@@ -18,7 +18,7 @@ public class Dwarf extends Character {
         Queue<String> speech = new LinkedList<>();
             speech.add("Welcome to Mount Daein traveller," +
                     "\nFor your quick wit and strength I present you with the Air sphere" +
-                    "\nMay it guide and protect you on your perilous journey");
+                    "\nMay it guide and protect you on your perilous journey" +
                     "\nType [take sphere] to obtain " + getItem() + " and add it to your inventory!");
             speech.add("Thank you for your help young prince....");
         setSpeech(speech);

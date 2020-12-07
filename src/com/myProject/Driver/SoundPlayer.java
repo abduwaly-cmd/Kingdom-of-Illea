@@ -16,7 +16,7 @@ public class SoundPlayer implements Runnable, LineListener {
         this.running = true;
         this.filePath = filePath;
         this.continous = true;
-        this.as = AudioSystem.getAudioInputStream(new File (this.filePath));
+        this.as = AudioSystem.getAudioInputStream(new File ("/Users/abdu/Desktop/Projects/Uni/Software Design/myProject/out/production/myProject/com/myProject/Sounds/" + this.filePath + ".wav"));
         this.playCompleted = false;
         AudioFormat format = this.as.getFormat();
         DataLine.Info info = new DataLine.Info(Clip.class, format);
@@ -32,7 +32,7 @@ public class SoundPlayer implements Runnable, LineListener {
         this.running = true;
         this.filePath = filePath;
         this.continous = continous;
-        this.as = AudioSystem.getAudioInputStream(new File (this.filePath));
+        this.as = AudioSystem.getAudioInputStream(new File ("/Users/abdu/Desktop/Projects/Uni/Software Design/myProject/out/production/myProject/com/myProject/Sounds/" + this.filePath + ".wav"));
         this.playCompleted = false;
         AudioFormat format = this.as.getFormat();
         DataLine.Info info = new DataLine.Info(Clip.class, format);
@@ -47,7 +47,7 @@ public class SoundPlayer implements Runnable, LineListener {
     public void change(String filePath) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         if(!playCompleted) audioClip.close();
         this.filePath = filePath;
-        this.as = AudioSystem.getAudioInputStream(new File (this.filePath));
+        this.as = AudioSystem.getAudioInputStream(new File ("/Users/abdu/Desktop/Projects/Uni/Software Design/myProject/out/production/myProject/com/myProject/Sounds/" + this.filePath + ".wav"));
         this.playCompleted = false;
         AudioFormat format = this.as.getFormat();
         DataLine.Info info = new DataLine.Info(Clip.class, format);
@@ -62,10 +62,7 @@ public class SoundPlayer implements Runnable, LineListener {
     @Override
     public void update(LineEvent event) {
         LineEvent.Type type = event.getType();
-        if (type == LineEvent.Type.START)
-            System.out.println("Playback started.");
-        else if (type == LineEvent.Type.STOP)
-            playCompleted = true;
+        if (type == LineEvent.Type.STOP) playCompleted = true;
     }
 
     @Override
