@@ -14,13 +14,13 @@ public class HumanKingdom implements LocInstance {
     private final Character character;
 
     public HumanKingdom() {
-        this.name = "Human Kingdom";
+        this.name = "Mecethea Kingdom";
         this.enemy = null;
         this.quest = new noQuest();
         this.soundFile = "Kingdom";
         this.character = new Wizard();
-        this.description = "Early morning in the Kingdom eh ;)";
-    }
+        this.description = "Its a sunny day, and you are resting under an apple tree." +
+                "\nA wizard is approaching you, you can talk to him...";    }
 
     @Override
     public Quest getQuest() { return this.quest; }

@@ -18,8 +18,7 @@ public class dayForest implements LocInstance {
         this.enemy = null;
         this.quest = new Riddle();
         this.soundFile = "Nidala Forest (Day)";
-        this.description = "Its a sunny day, and you are resting under an apple tree." +
-                "\nA wizard is approaching you, you can talk to him...";
+        this.description = "The Nymphs are approaching...";
         // this.character.add(new Wizard());
         this.character = new Nymph();
     }

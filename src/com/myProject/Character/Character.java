@@ -38,6 +38,7 @@ public class Character {
     public Item getItem() { return this.items.element(); }
     public String speak() { return (!speech.isEmpty()) ? this.name + ": " + speech.remove() : null; }
     public String getRace() { return this.race; }
+    public String getName() { return this.name; }
     public boolean isCanNotSpeak() { return this.speech.isEmpty(); }
 
     // Setters

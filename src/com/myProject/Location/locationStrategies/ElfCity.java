@@ -1,28 +1,27 @@
 package com.myProject.Location.locationStrategies;
 
 import com.myProject.Character.Character;
-import com.myProject.Character.Dwarf;
-import com.myProject.Quests.Maze;
+import com.myProject.Character.Elf;
+import com.myProject.Character.Wizard;
 import com.myProject.Quests.Quest;
+import com.myProject.Quests.noQuest;
 
-public class Mountain implements LocInstance {
+public class ElfCity implements LocInstance {
     private final Quest quest;
     private final String name;
-    private final String soundFile;
     private final String description;
+    private final String soundFile;
     private final Character enemy;
     private final Character character;
 
-    public Mountain() {
-        this.name = "Mount Daein";
+    public ElfCity() {
+        this.name = "Erilea Kingdom";
         this.enemy = null;
-        this.quest = new Maze();
-        this.soundFile = "Mount Daein (Maze)";
-        this.character = new Dwarf();
-        this.description = "This location is home to the Dwarves that hold the Air Sphere." +
-                "\nIn order to be able to attain the Air Sphere, you must walk through" +
-                "\nthis maze and find their underground city."+
-                "\nType [start] to walk through the maze...";
+        this.quest = new noQuest();
+        this.soundFile = "Kingdom";
+        this.character = new Elf();
+        this.description = "You are kidnapped by the Elves and you need to fight in a duel in order " +
+                "\nto prove yourself and earn the Life Sphere. The Elves would like to talk to you...";
     }
 
     @Override

@@ -19,7 +19,9 @@ public class Sea implements LocInstance {
         this.quest = new noQuest();
         this.soundFile = "Lakes of Darya";
         this.character = new Siren();
-        this.description = "You arrive at the Lakes of Darya, however the once glittering waters are muddy and dirty, you wonder what could have caused such a tragedy";
+        this.description = "You arrive at the Lakes of Darya, however the once glittering waters are muddy and dirty," +
+                "\nyou wonder what could have caused such a tragedy." +
+                "\nThe Sirens are approaching you...";
     }
 
     @Override

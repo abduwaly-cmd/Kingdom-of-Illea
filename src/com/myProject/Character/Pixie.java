@@ -18,8 +18,8 @@ public class Pixie extends Character {
 
         Queue<String> speech = new LinkedList<>();
             speech.add("Oh thank you! Thank you so so so much!" +
-                    "\nMy name is Asteria and for your bravery and" +
-                    "\ncourage I shall grant you the Fire Sphere." +
+                    "\n\t\tMy name is " + getName() + " and for your bravery and" +
+                    "\n\t\tcourage I shall grant you the Fire Sphere." +
                     "\nType [take] to pick up the Fire Sphere...\n");
         setSpeech(speech);
 

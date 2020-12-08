@@ -2,9 +2,7 @@ package com.myProject.Driver;
 
 import com.myProject.Location.*;
 import com.myProject.Driver.Tree.Node;
-import com.myProject.Location.locationStrategies.HumanKingdom;
-import com.myProject.Location.locationStrategies.Mountain;
-import com.myProject.Location.locationStrategies.Sea;
+import com.myProject.Location.locationStrategies.*;
 
 enum LOCATION {
     KINGDOM,
@@ -46,7 +44,7 @@ public class Map {
         Location[] locations = new Location[] { new Location(new HumanKingdom()), new Forest(), new Location(new Mountain()), new Location(new Mountain()), new Location(new Sea()), new DemonKingdom() };
         this.tree = new Tree();
 
-        Node l0 = new Node(locations[LOCATION.KINGDOM.ordinal()]);
+        Node l0 = new Node(locations[LOCATION.KINGDOM.ordinal()]);          // Level 0 [Humans]
         tree.insert(l0, locations[LOCATION.FOREST.ordinal()]);              // Level 1 [Nymphs]
         this.current = l0;                                                  // Level 1 [Nymphs]
 
@@ -100,8 +98,8 @@ public class Map {
         tree.insert(l54.left, locations[LOCATION.DEMONKINGDOM.ordinal()]);  // Level 7 [4] - L [Typhon]
 
 
-        Node l33 = l22.right;                                              // Level 3 [3] - R [Elves]
-        tree.insert(l33, locations[LOCATION.SEA.ordinal()]);               // Level 4 [3] - L [Sirens]
+        Node l33 = l22.right;                                               // Level 3 [3] - R [Elves]
+        tree.insert(l33, locations[LOCATION.SEA.ordinal()]);                // Level 4 [3] - L [Sirens]
 
         Node l45 = l33.left;                                                // Level 3 [3] - R [Sirens]
         tree.insert(l45, locations[LOCATION.FOREST.ordinal()]);             // Level 4 [3] - L [Pixies]

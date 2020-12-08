@@ -8,9 +8,9 @@ public class SoundPlayer implements Runnable, LineListener {
     private Clip audioClip;
     private String filePath;
     private boolean running;
-    private boolean continous;
-    private boolean playCompleted;
     private AudioInputStream as;
+    private boolean playCompleted;
+    private final boolean continous;
 
     public SoundPlayer(String filePath) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         this.running = true;

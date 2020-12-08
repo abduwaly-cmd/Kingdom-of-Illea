@@ -16,15 +16,13 @@ public class Wizard extends Character {
             items.add(new Amulet());
         setItems(items);
 
-            speech.add("Chrom! Sir, please help for there is a threat against the kingdom of Illea." +
+        speech.add("Chrom! Sir, please help for there is a threat against the kingdom of Illea." +
                     "\n\t\tA new evil has risen and he goes by the name Valadar. He is trying to resurrect" +
                     "\n\t\tthe evil Typhon! You must collect all 5 spheres in order to save the Kingdom!" +
-                    "\nType [yes] to help...");
-            speech.add("My prince, here is an amulet to store the spheres in." +
+                    "\n\t\tMy prince, here is an amulet to store the spheres in."+
                     "\nType [take amulet] to take it...");
-            speech.add("Great, now that you have it! I think its better for you to head on to the Nymphs and gain the earth sphere." +
-                    "\nYou have arrived at the Nymphs..." +
-                    "\nype [talk to nymphs] to talk…");
+        speech.add("Great, now that you have it! Its time to find the first sphere (Earth Sphere) which" +
+                    "\nis located in the Nidale Forest with the Nymphs...");
         setSpeech(speech);
     }
 }
