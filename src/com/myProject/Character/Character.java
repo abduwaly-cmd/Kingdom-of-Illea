@@ -40,10 +40,12 @@ public class Character {
     public String getRace() { return this.race; }
     public String getName() { return this.name; }
     public boolean isCanNotSpeak() { return this.speech.isEmpty(); }
+    public synchronized int getHealth() { return this.health; }
 
     // Setters
     //public void nextSpeech() { String l = this.speech.remove(); }
     public void setItems(Queue<Item> items) { this.items = items; }
+    public synchronized void setHealth(int n) { this.health = n; }
     public void setSpeech(Queue<String> speech) { this.speech = speech; }
 
     @Override

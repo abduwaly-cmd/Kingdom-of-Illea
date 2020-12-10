@@ -18,6 +18,9 @@ public class terminalInput implements inputStream {
         else if(inputArr.length >= 1 && inputArr[0].equals("take")) {
             out = new String[] { "take", inputArr[1] };
         }
+        else if(userInput.equals("take")) {
+            out = new String[] {"take", ""};
+        }
         else if(userInput.equals("mischief managed")) {
             out = new String[] {"stop"};
         }
@@ -48,6 +51,9 @@ public class terminalInput implements inputStream {
         //checks if the length is 2 or more, first word is "talk", second is "to" and sets the output to "talk", "...."
         else if(inputArr.length >= 2 && inputArr[0].equals("talk") && inputArr[1].equals("to")) {
             out = new String[] { "talk", inputArr[2] };
+        }
+        else if(userInput.equals("talk")) {
+            out = new String[] {"talk", ""};
         }
         else {
             out = inputArr;

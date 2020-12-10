@@ -1,5 +1,6 @@
 package com.myProject.Location.locationStrategies;
 
+import com.myProject.Quests.Fight;
 import com.myProject.Quests.Quest;
 import com.myProject.Quests.Riddle;
 import com.myProject.Character.*;
@@ -17,10 +18,14 @@ public class nightForest implements LocInstance {
     public nightForest() {
         this.name = "Niadale Forest (Night)";
         this.enemy = new Troll();
-        this.quest = new Riddle();
+        this.quest = new Fight(enemy);
         this.soundFile = "Nidala Forest (Night)";
         this.character = new Pixie();
-        this.description = "Early morning in the forest eh ;)";
+        this.description = " I’m a bit tired. I think it’s time for me to hit the hay and continue" +
+                "\nlooking for the spheres at the crack of dawn. I’ll take shelter by that tree." +
+                "\n\n\t\t\t--- goes to sleep ---" +
+                "\n\n*SHOUTING NEARBY* HELP! HELP! THE PIXIES ARE UNDER ATTACK!" +
+                "\nType [start] to help the pixies...";
     }
 
     @Override

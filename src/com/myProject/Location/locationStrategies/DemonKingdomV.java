@@ -20,7 +20,7 @@ public class DemonKingdomV implements LocInstance {
     public DemonKingdomV() {
         this.name = "The Dooms of Valm";
         this.enemy = new Validar();
-        this.quest = new Fight();
+        this.quest = new Fight(enemy);
         this.soundFile = "Demon Kingdom";
         this.character = null;
         this.description = "You have made it in time for Validar has not resurrected Typhon yet; " +

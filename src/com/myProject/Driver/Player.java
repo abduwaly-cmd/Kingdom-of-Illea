@@ -22,6 +22,7 @@ import java.util.Arrays;
 public class Player extends ConcreteObserver {
 	private Map map;
 	private int health;
+	private double vulnerability;
 	private Quest currentQuest;
 	private String name;
 	private String dialogue;
@@ -41,11 +42,14 @@ public class Player extends ConcreteObserver {
 		this.map = new Map();
 		this.name = name;
 		this.timer = new StopWatch();
+		this.health = 100;
 		this.reading = true;
 		this.console = console;
 		this.items.add(new Sword());
+		this.items.add(new Shield());
 		this.currentQuest = null;
-		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand(), new startQuest(), new pickUpCommand()};
+		this.vulnerability = 1;
+		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand(), new startQuest(), new pickUpCommand(), new useItemCommand()};
 		this.controlPanel = new ControlPanel(cmds);
 		setLocation(this.map.getCurrentLocation(), this.map.getNext());
 		soundPlayer = new SoundPlayer(this.currentLocation.getSoundFile());
@@ -60,8 +64,12 @@ public class Player extends ConcreteObserver {
 	public Map getMap() { return this.map; }
 	public int getTime() { return this.timer.getSeconds(); }
 	public String toString() { return name; }
+	public double getStrength() { return 1.0; }
 	public Location getLocation() { return currentLocation; }
+	public double getVulnerability() { return this.vulnerability; }
 	public ArrayList<Item> getItems() { return this.items; }
+	public synchronized int getHealth() { return this.health; }
+	public synchronized void setHealth(int n) { this.health = n; }
 	public void addItem(Item item) {
 		if(item.toString().contains("sphere")) {
 			this.spheres.add(item);
@@ -71,6 +79,14 @@ public class Player extends ConcreteObserver {
 			System.out.println("This " + item + " has been added to your inventory...");
 		}
 	}
+	public void useItem(String itemName) {
+		for(Item item:items)
+			if(item.getName().toLowerCase().equals(itemName)) {
+				item.use(this);
+				return;
+			}
+		System.out.println("You dont have the item :/");
+	}
 	public void setLocation(Location loc, Location[] nextLocs) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		currentLocation = loc;
 		System.out.println("You are now in " + currentLocation);
@@ -79,6 +95,7 @@ public class Player extends ConcreteObserver {
 		System.out.println(currentLocation.printDescription());
 		currentLocation.setNextLocations(nextLocs);
 	}
+	public void setVulnerability(double vulnerability) { this.vulnerability = vulnerability; }
 
 	public void switchConsoleToSocket() { console.switchTerminaltoSocketInput(); }
 	public void switchConsoleToTerminal() { console.switchSockettoTerminalInput(); }
@@ -98,6 +115,9 @@ public class Player extends ConcreteObserver {
 			case "take":
 				controlPanel.execute(3, this, in);
 				break;
+			case "use":
+				controlPanel.execute(4, this, in);
+				break;
 			case "test":
 				switchConsoleToSocket();
 				break;
@@ -110,16 +130,8 @@ public class Player extends ConcreteObserver {
 				System.out.println("TOMATO POTATO");
 				break;
 			case "socket":
-//				if(currentLocation.getQuest().isActive())
-//					controlPanel.execute(2, this, in);
-				//System.out.print("Testing :)");
-				//currentQuest.update(console, in[1]);
-				System.out.println("\t> " + Arrays.toString(in));
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				if(currentLocation.getQuest().isActive())
+					controlPanel.execute(2, this, in);
 				break;
 			case "watch":
 				System.out.println(this.timer.getSeconds());
@@ -129,14 +141,11 @@ public class Player extends ConcreteObserver {
 				for(Item item: items)
 					System.out.print("\t> " + item.toString());
 				break;
-			case "stop":
-			case "use":
 			default:
 				if(currentLocation.getQuest().isActive())
 					controlPanel.execute(2, this, in);
 				else System.out.println("Invalid :c");
 				break;
 		}
-		prevCommand = in;
 	}
 }

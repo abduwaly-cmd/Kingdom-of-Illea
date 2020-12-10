@@ -22,7 +22,7 @@ public class Wizard extends Character {
                     "\n\t\tMy prince, here is an amulet to store the spheres in."+
                     "\nType [take amulet] to take it...");
         speech.add("Great, now that you have it! Its time to find the first sphere (Earth Sphere) which" +
-                    "\nis located in the Nidale Forest with the Nymphs...");
+                    "\n\t\tis located in the Nidale Forest with the Nymphs...");
         setSpeech(speech);
     }
 }

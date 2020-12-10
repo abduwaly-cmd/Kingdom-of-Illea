@@ -29,17 +29,23 @@ public class Location {
 		this.description = inst.getDescription();
 	}
 
-	// Talks to players
-	public void talk(String charName) {
-		if(charName.equals(this.npc.getRace().toLowerCase()))
+	// Talks to npc
+	public void talk() {
+		if(!this.npc.isCanNotSpeak())
 			System.out.println(this.npc.speak());
+		if(this.npc.isCanNotSpeak()) setDone();
+	}
+	public void talk(String charName) {
+		if(charName.isEmpty()) talk();
+		if(charName.equals(this.npc.getRace().toLowerCase()))
+			talk();
 		else System.out.println("Character un-available");
 	}
 
 	// Takes the item from a character and gives it to the player
 	public void takeItem(Player player, String itemName) {
 		if(this.npc.giveItem(player, itemName)) {
-			setDone();
+			talk();
 			return;
 		}
 		System.out.println("Invalid item :/");
@@ -48,17 +54,20 @@ public class Location {
 	// Getters
 	public Quest getQuest() { return this.quest; }
 	public boolean isObjDone() { return this.objDone; }
+	public Character getEnemy() { return this.enemy; }
 	public String getSoundFile() { return this.soundFile; }
-	public Character getCharacters() { return this.npc; }
+	public Character getCharacter() { return this.npc; }
 	public String printDescription() { return this.description; }
 
 	// Setters
 	public void setNextLocations(Location[] nextLocations) { this.nextLocations = nextLocations; }
-	public void setQuestDone(String characterSpecies) {
+
+	public void setQuestDone() {
 		this.quest.setDone();
-		if(characterSpecies != null) talk(characterSpecies);
+		if(this.npc != null && !this.npc.isCanNotSpeak()) talk();
 		else setDone();
 	}
+
 	// checks and sets the current location to done so the player can move forward to the next locations
 	public void setDone() {
 		if(!this.quest.isDone()) return;

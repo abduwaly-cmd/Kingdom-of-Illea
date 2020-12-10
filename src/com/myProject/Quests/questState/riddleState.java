@@ -14,7 +14,7 @@ public class riddleState implements State {
 
     @Override
     public void next(Quest quest, Player player, String[] str) {
-        if(str[0].equals(this.ans)) player.getLocation().setQuestDone("nymph");
+        if(str[0].equals(this.ans)) player.getLocation().setQuestDone();
         else System.out.println("wrong answer, try again...");
     }
 

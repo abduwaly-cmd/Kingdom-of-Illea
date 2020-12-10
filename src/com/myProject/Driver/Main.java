@@ -16,7 +16,7 @@ public class Main {
 		//
 		//		// 192.168.1.101 63306
 		//		console.setSocket(TCP_Session.getHost(), TCP_Session.getPort());
-		console.setSocket("192.168.1.101", 63306);
+		console.setSocket("192.168.1.101", 55189);
 		Player chrom = Player.getInstance(console, "Chrom");
 	}
 }

@@ -6,9 +6,11 @@ import com.myProject.Quests.Quest;
 import java.util.Queue;
 
 public class mazeState implements State {
-    private Queue<String> path;
+    private final Queue<String> path;
 
-    public mazeState(Queue<String> path) { this.path = path; }
+    public mazeState(Queue<String> path) {
+        this.path = path;
+    }
 
     private void printPath() {
         switch (path.element()) {
@@ -29,12 +31,12 @@ public class mazeState implements State {
     @Override
     public void next(Quest quest, Player player, String[] str) throws InterruptedException {
         if(str[0].equals("socket")) {
-            if(path.isEmpty()) {
-                player.getLocation().setQuestDone("dwarf");
-                player.switchConsoleToTerminal();
-            } else if(str[2].equals(path.element())) {
+            if (str[2].equals(path.element())) {
                 path.remove();
-                printPath();
+                if (path.isEmpty()) {
+                    player.getLocation().setQuestDone();
+                    player.switchConsoleToTerminal();
+                } else printPath();
             } else {
                 quest.setActive(false);
                 System.out.println("You Lost the dwarf :c");
@@ -46,9 +48,12 @@ public class mazeState implements State {
             player.switchConsoleToSocket();
             printPath();
         }
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     @Override
-    public void printStatus() { System.out.println("Follow the dwarf through this maze to catch him!"); }
+    public void printStatus() {
+        System.out.println("Follow the dwarf through this maze to catch him!");
+        System.out.println("Type [aight] to initiate :)");
+    }
 }
