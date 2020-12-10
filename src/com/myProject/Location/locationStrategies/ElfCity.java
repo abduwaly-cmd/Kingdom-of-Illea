@@ -20,7 +20,7 @@ public class ElfCity implements LocInstance {
         this.quest = new noQuest();
         this.soundFile = "Kingdom";
         this.character = new Elf();
-        this.description = "You are kidnapped by the Elves and you need to fight in a duel in order " +
+        this.description = "You are kidnapped by the Elves and you need to make a healing potion " +
                 "\nto prove yourself and earn the Life Sphere. The Elves would like to talk to you...";
     }
 
