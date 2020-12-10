@@ -22,21 +22,15 @@ public class fightState implements State {
         if(str[0].equals("socket")) {
             if(player.getHealth() > 0 && enemy.getHealth() > 0) {
                 int damage = (rd.nextInt(10));
-                if (str[4].equals("Retreating") && !prevAttack.equals(str[4])) {
+                if ((str[4].equals("Retreating") || (str[4].equals("Stationary")) && !prevAttack.equals(str[4])) ) {
                     player.setHealth(player.getHealth() - (int) (damage * player.getVulnerability()));
                     System.out.println(enemy + " hit you -" + damage + " [" + player.getHealth() + "]");
                 } else if (str[4].equals("Swinging") && !prevAttack.equals(str[4])) {
                     enemy.setHealth(enemy.getHealth() - (int) ((damage + 10) * player.getStrength()));
                     System.out.println("You hit " + enemy + " -" + damage + " [" + enemy.getHealth() + "]");
-                } else if (!prevAttack.equals(str[4])) {
-                    if(!attacking) {
-                        player.setHealth(player.getHealth() - (int) (damage * player.getVulnerability()));
-                        System.out.println(enemy + " hit you -" + damage + " [" + player.getHealth() + "]");
-                    } else if(player.getHealth() < 100) {
-                        player.setHealth(player.getHealth() + 1);
-                        System.out.println("You healed +1 [" + player.getHealth() + "]");
-                    }
-                    attacking = rd.nextBoolean();
+                } else {
+                    player.setHealth(player.getHealth() + 1);
+                    System.out.println("You healed +1 [" + player.getHealth() + "]");
                 }
                 prevAttack = str[4];
             }

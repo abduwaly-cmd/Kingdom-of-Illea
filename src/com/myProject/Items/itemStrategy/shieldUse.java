@@ -18,7 +18,7 @@ public class shieldUse implements itemUse, Runnable {
     public void run() {
         System.out.println("Shield Activated, u r safe :)");
         try {
-            thread.sleep(10*1000);
+            thread.sleep(10 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
