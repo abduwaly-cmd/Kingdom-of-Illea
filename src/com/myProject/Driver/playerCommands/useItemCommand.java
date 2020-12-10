@@ -2,9 +2,9 @@ package com.myProject.Driver.playerCommands;
 
 import com.myProject.Driver.Player;
 
+import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 
 public class useItemCommand implements Command {
     @Override
@@ -13,7 +13,5 @@ public class useItemCommand implements Command {
     }
 
     @Override
-    public void undo() {
-
-    }
+    public void undo() { }
 }
