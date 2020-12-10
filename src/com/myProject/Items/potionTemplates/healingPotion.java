@@ -9,17 +9,12 @@ public class healingPotion extends Potions {
     }
 
     @Override
-    protected void opt() {
-
-    }
-
-    @Override
     protected void stir() {
-
+        System.out.println("Stir three times anticlockwise.");
     }
 
     @Override
     protected void add() {
-
+        System.out.println("Add fluxweed, cherries, and half a cup watermelon juice.");
     }
 }

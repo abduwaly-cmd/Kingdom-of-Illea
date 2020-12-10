@@ -18,10 +18,10 @@ public abstract class Potions extends Item {
     }
 
     protected void heat() {
-        System.out.println("Heat at high temperature");
+        System.out.println("Heat at high temperature.");
     }
 
-    protected abstract void opt();
+    protected void opt() { System.out.println("Place the potion in a vile."); }
 
     protected abstract void stir();
 
