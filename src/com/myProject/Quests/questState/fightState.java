@@ -2,8 +2,12 @@ package com.myProject.Quests.questState;
 
 import com.myProject.Character.Character;
 import com.myProject.Driver.Player;
+import com.myProject.Driver.SoundPlayer;
 import com.myProject.Quests.Quest;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.Random;
 
 public class fightState implements State {
@@ -18,7 +22,7 @@ public class fightState implements State {
     }
 
     @Override
-    public void next(Quest quest, Player player, String[] str) throws InterruptedException {
+    public void next(Quest quest, Player player, String[] str) throws InterruptedException, UnsupportedAudioFileException, IOException, LineUnavailableException {
         if(str[0].equals("socket")) {
             if(player.getHealth() > 0 && enemy.getHealth() > 0) {
                 int damage = (rd.nextInt(10));
@@ -27,8 +31,9 @@ public class fightState implements State {
                     System.out.println(enemy + " hit you -" + damage + " [" + player.getHealth() + "]");
                 } else if (str[4].equals("Swinging") && !prevAttack.equals(str[4])) {
                     enemy.setHealth(enemy.getHealth() - (int) ((damage + 10) * player.getStrength()));
+                    new SoundPlayer("Sword", false);
                     System.out.println("You hit " + enemy + " -" + damage + " [" + enemy.getHealth() + "]");
-                } else {
+                } else if (!prevAttack.equals(str[4]) && player.getHealth()<100) {
                     player.setHealth(player.getHealth() + 1);
                     System.out.println("You healed +1 [" + player.getHealth() + "]");
                 }

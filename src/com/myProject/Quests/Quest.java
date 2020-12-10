@@ -5,6 +5,10 @@ import com.myProject.Quests.questState.State;
 import com.myProject.Quests.questState.defaultState;
 import com.myProject.Quests.questState.doneState;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
 public class Quest {
     private State next;
     private State state;
@@ -26,7 +30,7 @@ public class Quest {
     public void printStatus() { state.printStatus(); }
     public void setState(State state) { this.state = state; }
     public void setNextState(State state) { this.next = state; }
-    public void nextState(Player player, String[] in) throws InterruptedException { state.next(this, player, in);}
+    public void nextState(Player player, String[] in) throws InterruptedException, UnsupportedAudioFileException, IOException, LineUnavailableException { state.next(this, player, in);}
     public void setActive(boolean state) { this.active = state; }
 
     public void setDone() {
