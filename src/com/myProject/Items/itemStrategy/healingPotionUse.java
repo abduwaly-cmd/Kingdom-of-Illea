@@ -7,5 +7,6 @@ public class healingPotionUse implements itemUse {
     @Override
     public void use(Player player) {
         player.setHealth(100);
+        System.out.println("You healed [" + player.getHealth() + "]");
     }
 }

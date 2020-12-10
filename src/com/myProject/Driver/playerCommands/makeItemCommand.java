@@ -10,7 +10,10 @@ import java.io.IOException;
 public class makeItemCommand implements Command {
     @Override
     public void execute(Player player, String[] act) throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException {
-        if(act[1].equals("healing potion")) player.addItem(new healingPotion());
+        if(act[1].equals("healing potion")) {
+            player.addItem(new healingPotion());
+            player.getLocation().talk();
+        }
     }
 
     @Override

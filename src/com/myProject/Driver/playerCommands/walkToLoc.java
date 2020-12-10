@@ -15,6 +15,7 @@ public class walkToLoc implements Command {
             Location nextLoc = player.getMap().next(act[1]);
             if (nextLoc.toString().toLowerCase().contains("forest")) nextLoc.switchInstance();
             else if (nextLoc.toString().toLowerCase().contains("demon") && player.getTime() > 300) nextLoc.switchInstance();
+            else if (nextLoc == null){ System.out.println("you won!"); System.exit(1); }
             player.setLocation(nextLoc, player.getMap().getNext());
         } else System.out.println("You didnt achieve the required objectives in this location");
     }

@@ -34,6 +34,10 @@ public class terminalInput implements inputStream {
         //checks if the first word is "use" and sets the output to "use", "...."
         else if(inputArr[0].equals("use")) {
             out = new String[] { "use", userInput.substring(4)};
+
+        }
+        else if(inputArr[0].equals("make")) {
+            out = new String[] { "make", userInput.substring(5)};
         }
         else if(inputArr[0].equals("inv")) {
             out = new String[] { "inventory" };
