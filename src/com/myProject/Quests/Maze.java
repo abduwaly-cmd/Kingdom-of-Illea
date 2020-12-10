@@ -3,6 +3,9 @@ package com.myProject.Quests;
 import com.myProject.Driver.Player;
 import com.myProject.Quests.questState.mazeState;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -22,7 +25,7 @@ public class Maze extends Quest {
     }
 
     @Override
-    public void nextState(Player player, String[] in) throws InterruptedException {
+    public void nextState(Player player, String[] in) throws InterruptedException, UnsupportedAudioFileException, IOException, LineUnavailableException {
         super.nextState(player, in);
     }
 }

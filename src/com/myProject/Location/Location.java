@@ -37,7 +37,7 @@ public class Location {
 	}
 	public void talk(String charName) {
 		if(charName.isEmpty()) talk();
-		if(charName.equals(this.npc.getRace().toLowerCase()))
+		else if(charName.equals(this.npc.getRace().toLowerCase()))
 			talk();
 		else System.out.println("Character un-available");
 	}
