@@ -41,7 +41,7 @@ public class Map {
     private Node current;
 
     Map() {
-        Location[] locations = new Location[] { new Location(new HumanKingdom()), new Forest(), new Location(new Mountain()), new Location(new Mountain()), new Location(new Sea()), new DemonKingdom() };
+        Location[] locations = new Location[] { new Location(new HumanKingdom()), new Forest(), new Location(new ElfCity()), new Location(new Mountain()), new Location(new Sea()), new DemonKingdom() };
         this.tree = new Tree();
 
         Node l0 = new Node(locations[LOCATION.KINGDOM.ordinal()]);          // Level 0 [Humans]
@@ -64,6 +64,7 @@ public class Map {
         tree.insert(l41, locations[LOCATION.ELFCITY.ordinal()]);            // Level 5 [1] - L [Elves]
 
         Node l51 = l41.left;                                                // Level 5 [1] - L [Elves]
+        this.current = l51;
         tree.insert(l51, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [1] - L [Validar]
         tree.insert(l51.left, locations[LOCATION.DEMONKINGDOM.ordinal()]);  // Level 7 [1] - L [Typhon]
 
@@ -80,7 +81,6 @@ public class Map {
         tree.insert(l22, locations[LOCATION.ELFCITY.ordinal()]);            // Level 3 [3] - R [Elves]
 
         Node l32 = l22.left;                                                // Level 3 [2] - L [Pixies]
-        this.current = l32;
         tree.insert(l32, locations[LOCATION.ELFCITY.ordinal()]);            // Level 4 [3] - L [Elves]
         tree.insert(l32, locations[LOCATION.SEA.ordinal()]);                // Level 4 [4] - R [Sirens]
 

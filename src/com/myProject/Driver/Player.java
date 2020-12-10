@@ -49,7 +49,7 @@ public class Player extends ConcreteObserver {
 		this.items.add(new Shield());
 		this.currentQuest = null;
 		this.vulnerability = 1;
-		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand(), new startQuest(), new pickUpCommand(), new useItemCommand()};
+		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand(), new startQuest(), new pickUpCommand(), new useItemCommand(), new makeItemCommand()};
 		this.controlPanel = new ControlPanel(cmds);
 		setLocation(this.map.getCurrentLocation(), this.map.getNext());
 		soundPlayer = new SoundPlayer(this.currentLocation.getSoundFile());
@@ -117,6 +117,9 @@ public class Player extends ConcreteObserver {
 				break;
 			case "use":
 				controlPanel.execute(4, this, in);
+				break;
+			case "make":
+				controlPanel.execute(5, this, in);
 				break;
 			case "test":
 				switchConsoleToSocket();
