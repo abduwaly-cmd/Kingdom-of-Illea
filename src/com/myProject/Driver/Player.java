@@ -69,7 +69,13 @@ public class Player extends ConcreteObserver {
 	public double getVulnerability() { return this.vulnerability; }
 	public ArrayList<Item> getItems() { return this.items; }
 	public synchronized int getHealth() { return this.health; }
-	public synchronized void setHealth(int n) { this.health = n; }
+
+	public synchronized void setHealth(int n) {
+		this.health += n;
+		if(n > 0) System.out.println("You Healed +" + n + " [" + this.health + "]");
+		if(n < 0) System.out.println("You have been attacked -" + n + " [" + this.health + "]");
+	}
+
 	public void addItem(Item item) {
 		if(item.toString().contains("sphere")) {
 			this.spheres.add(item);

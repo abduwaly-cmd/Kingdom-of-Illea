@@ -7,6 +7,7 @@ import java.util.Queue;
 
 public class Character {
     private int health;
+    private int iHealth;
     private Queue<Item> items;
     private Queue<String> speech;
     private final String name;
@@ -16,12 +17,14 @@ public class Character {
         this.name = name;
         this.race = race;
         this.health = 100;
+        this.iHealth = health;
     }
 
     public Character(String name, String race, int health) {
         this.name = name;
         this.race = race;
         this.health = health;
+        this.iHealth = health;
     }
 
     // The character gives up its item and adds it to the player
@@ -45,8 +48,12 @@ public class Character {
     // Setters
     //public void nextSpeech() { String l = this.speech.remove(); }
     public void setItems(Queue<Item> items) { this.items = items; }
-    public synchronized void setHealth(int n) { this.health = n; }
+    public synchronized void resetHealth() { this.health = this.iHealth; }
     public void setSpeech(Queue<String> speech) { this.speech = speech; }
+    public synchronized void setHealth(int n) {
+        this.health += n;
+        System.out.println(name + " has been hit -" + n + " [" + health + "]");
+    }
 
     @Override
     public String toString() { return name; }
