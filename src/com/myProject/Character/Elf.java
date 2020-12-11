@@ -2,6 +2,7 @@ package com.myProject.Character;
 
 import com.myProject.Items.AirSphere;
 import com.myProject.Items.Item;
+import com.myProject.Items.LifeSphere;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -11,7 +12,7 @@ public class Elf extends Character {
         super("Ysildea", "Elf");
 
         Queue<Item> items = new LinkedList<>();
-        items.add(new AirSphere());
+        items.add(new LifeSphere());
         setItems(items);
 
         Queue<String> speech = new LinkedList<>();
