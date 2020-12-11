@@ -25,6 +25,7 @@ public class DemonKingdomV implements LocInstance {
         this.character = null;
         this.description = "You have made it in time for Validar has not resurrected Typhon yet; " +
                 "\ntherefore, you must only fight one of them and save the kingdom." +
+                "\nMake sure to use shield and Healing Potion if your health is low.." +
                 "\nType [start] to fight Validar.";
     }
 

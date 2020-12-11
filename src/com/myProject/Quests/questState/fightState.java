@@ -52,12 +52,12 @@ public class fightState implements State {
                 quest.setActive(false);
                 quest.setState(new defaultState());
                 System.out.println(">> " + enemy + " defeated you!");
-                System.out.println("Type [start] to try Again");
+                System.out.println("> Type [start] to try Again");
                 player.setHealth(100);
                 player.switchConsoleToTerminal();
             }
         } else if (str[0].equals("aight")) {
-            if(enemy.getName().contains("Validar")) player.getSoundPlayer().change("Validar");
+            if(enemy.getName().contains("Typhon")) player.getSoundPlayer().change("Typhon");
             player.switchConsoleToSocket();
         } else System.out.println("> Invalid input :/");
         Thread.sleep(100);

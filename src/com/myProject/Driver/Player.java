@@ -59,8 +59,7 @@ public class Player extends ConcreteObserver {
 	public Map getMap() { return this.map; }
 	public int getTime() { return this.timer.getSeconds(); }
 	public String toString() { return name; }
-//	public double getStrength() { return spheres.size()/4.0; }
-	public double getStrength() { return 1.0; }
+	public double getStrength() { return spheres.size()/4.0; }
 	public Location getLocation() { return currentLocation; }
 	public double getVulnerability() { return this.vulnerability; }
 	public ArrayList<Item> getItems() { return this.items; }
@@ -107,7 +106,7 @@ public class Player extends ConcreteObserver {
 		if (loc.toString().toLowerCase().contains("forest")) loc.switchInstance();
 		else if (loc.toString().toLowerCase().contains("demon") && getTime() > 300) loc.switchInstance();
 		currentLocation = loc;
-		System.out.println("[Map] You are now in " + currentLocation);
+		System.out.println("\n[Map] You are now in " + currentLocation);
 		if(soundPlayer != null) soundPlayer.change(this.currentLocation.getSoundFile());
 		System.out.println("[Map] " + currentLocation.printDescription());
 		currentLocation.setNextLocations(nextLocs);
