@@ -52,7 +52,8 @@ public class Character {
     public void setSpeech(Queue<String> speech) { this.speech = speech; }
     public synchronized void setHealth(int n) {
         this.health += n;
-        System.out.println(name + " has been hit -" + n + " [" + health + "]");
+        if(this.health < 0) this.health = 0;
+        System.out.println("> " + name + " has been hit " + n + " [" + health + "]");
     }
 
     @Override

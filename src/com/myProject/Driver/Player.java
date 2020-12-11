@@ -11,7 +11,6 @@ import com.myProject.Driver.playerCommands.*;
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 //enum commands {
 //	walk(0),
@@ -25,10 +24,7 @@ public class Player extends ConcreteObserver {
 	private double vulnerability;
 	private Quest currentQuest;
 	private String name;
-	private String dialogue;
 	private Console console;
-	private boolean reading;
-	private String[] prevCommand;
 	private Location currentLocation;
 	private StopWatch timer;
 	private SoundPlayer soundPlayer;
@@ -43,7 +39,6 @@ public class Player extends ConcreteObserver {
 		this.name = name;
 		this.timer = new StopWatch();
 		this.health = 100;
-		this.reading = true;
 		this.console = console;
 		this.items.add(new Sword());
 		this.items.add(new Shield());
@@ -64,25 +59,29 @@ public class Player extends ConcreteObserver {
 	public Map getMap() { return this.map; }
 	public int getTime() { return this.timer.getSeconds(); }
 	public String toString() { return name; }
+//	public double getStrength() { return spheres.size()/4.0; }
 	public double getStrength() { return 1.0; }
 	public Location getLocation() { return currentLocation; }
 	public double getVulnerability() { return this.vulnerability; }
 	public ArrayList<Item> getItems() { return this.items; }
 	public synchronized int getHealth() { return this.health; }
+	public SoundPlayer getSoundPlayer() { return this.soundPlayer; }
 
 	public synchronized void setHealth(int n) {
 		this.health += n;
-		if(n > 0) System.out.println("You Healed +" + n + " [" + this.health + "]");
-		if(n < 0) System.out.println("You have been attacked -" + n + " [" + this.health + "]");
+		if(this.health < 0) this.health = 0;
+		if (n == 100) System.out.println("> You have been resurrected");
+		else if(n > 0) System.out.println("> You Healed +" + n + " [" + this.health + "]");
+		else if(n < 0) System.out.println("> You have been attacked " + n + " [" + this.health + "]");
 	}
 
 	public void addItem(Item item) {
 		if(item.toString().contains("sphere")) {
 			this.spheres.add(item);
-			System.out.println("This " + item + " has been added to your amulet...");
+			System.out.println("> " + item + " has been added to your amulet...");
 		} else {
 			this.items.add(item);
-			System.out.println("This " + item + " has been added to your inventory...");
+			System.out.println("> " + item + " has been added to your inventory...");
 		}
 	}
 	public void useItem(String itemName) {
@@ -93,13 +92,26 @@ public class Player extends ConcreteObserver {
 			}
 		System.out.println("You dont have the item :/");
 	}
-	public void setLocation(Location loc, Location[] nextLocs) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+
+	public void walk(String faceOrhead, String pos) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+		if(pos != null && pos.equals(faceOrhead)) {
+			Location nextLoc = map.next("");
+			setLocation(nextLoc, map.getNext());
+		} else if(faceOrhead.equals("Right") || faceOrhead.equals("Left")) {
+			Location nextLoc = map.next(faceOrhead);
+			setLocation(nextLoc, map.getNext());
+		}
+	}
+
+	private void setLocation(Location loc, Location[] nextLocs) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+		if (loc.toString().toLowerCase().contains("forest")) loc.switchInstance();
+		else if (loc.toString().toLowerCase().contains("demon") && getTime() > 300) loc.switchInstance();
 		currentLocation = loc;
-		System.out.println("You are now in " + currentLocation);
-		if(soundPlayer != null)
-			soundPlayer.change(this.currentLocation.getSoundFile());
-		System.out.println(currentLocation.printDescription());
+		System.out.println("[Map] You are now in " + currentLocation);
+		if(soundPlayer != null) soundPlayer.change(this.currentLocation.getSoundFile());
+		System.out.println("[Map] " + currentLocation.printDescription());
 		currentLocation.setNextLocations(nextLocs);
+		switchConsoleToTerminal();
 	}
 	public void setVulnerability(double vulnerability) { this.vulnerability = vulnerability; }
 
@@ -127,23 +139,10 @@ public class Player extends ConcreteObserver {
 			case "make":
 				controlPanel.execute(5, this, in);
 				break;
-			case "test":
-				switchConsoleToSocket();
-				break;
-			case "exit":
-				System.out.println("You're leaving :c");
-				break;
-			case "look":
-				break;
-			case "tomato":
-				System.out.println("TOMATO POTATO");
-				break;
 			case "socket":
 				if(currentLocation.getQuest().isActive())
 					controlPanel.execute(2, this, in);
-				break;
-			case "watch":
-				System.out.println(this.timer.getSeconds());
+				else controlPanel.execute(0, this, in);
 				break;
 			case "inventory":
 				if(items.isEmpty()) System.out.println("Your inventory is empty :)");

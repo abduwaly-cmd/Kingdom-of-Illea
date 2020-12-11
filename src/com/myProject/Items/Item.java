@@ -1,6 +1,7 @@
 package com.myProject.Items;
 
 import com.myProject.Driver.Player;
+import com.myProject.Items.itemStrategy.*;
 import com.myProject.Items.itemStrategy.itemUse;
 
 public class Item {
@@ -8,6 +9,7 @@ public class Item {
     private String name;
 
     Item(String name) {
+        this.use = new defaultUse();
         this.name = name;
     }
 

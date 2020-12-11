@@ -31,9 +31,6 @@ public class Console extends ConcreteSubject implements Runnable {
     public synchronized void switchSockettoTerminalInput() { this.inputStream = this.terminalIn; }
     public synchronized void setSocket(String host, int port) { this.socketIn = new socketInput(host, port); }
 
-//    private synchronized void setConsoleStatus(boolean status) { this.running = status; }
-//    private synchronized boolean getConsoleStatus() { return this.running; }
-
     @Override
     public void run() {
         while(running) {

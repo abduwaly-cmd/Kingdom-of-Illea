@@ -32,14 +32,14 @@ public class Location {
 	// Talks to npc
 	public void talk() {
 		if(!this.npc.isCanNotSpeak())
-			System.out.println(this.npc.speak());
+			System.out.println("\n" + this.npc.speak());
 		if(this.npc.isCanNotSpeak()) setDone();
 	}
 	public void talk(String charName) {
 		if(charName.isEmpty()) talk();
 		else if(charName.equals(this.npc.getRace().toLowerCase()))
 			talk();
-		else System.out.println("Character un-available");
+		else System.out.println("> Character un-available");
 	}
 
 	// Takes the item from a character and gives it to the player
@@ -48,7 +48,7 @@ public class Location {
 			talk();
 			return;
 		}
-		System.out.println("Invalid item :/");
+		System.out.println("> Invalid item, cant find it :/");
 	}
 
 	// Getters
@@ -57,6 +57,7 @@ public class Location {
 	public Character getEnemy() { return this.enemy; }
 	public String getSoundFile() { return this.soundFile; }
 	public Character getCharacter() { return this.npc; }
+	public Location[] getNextLocs() { return this.nextLocations; }
 	public String printDescription() { return this.description; }
 
 	// Setters
@@ -64,18 +65,20 @@ public class Location {
 
 	public void setQuestDone() {
 		this.quest.setDone();
-		if(this.npc != null && !this.npc.isCanNotSpeak()) talk();
-		else setDone();
+		setDone();
 	}
 
 	// checks and sets the current location to done so the player can move forward to the next locations
 	public void setDone() {
 		if(!this.quest.isDone()) return;
 		this.objDone = true;
-		if(nextLocations == null);
+		if(this.npc != null && !this.npc.isCanNotSpeak()) { talk(); return; }
+		if(nextLocations == null) { System.out.println("\n>> YOU SAVED THE KINGDOMS & WON! <<"); System.exit(1); }
 		else if(nextLocations.length == 2)
-			System.out.println("You can now walk left to " + nextLocations[0] + " or walk right to " + nextLocations[1]);
-		else System.out.println("You can now walk to " + nextLocations[0]);
+			System.out.println("[Map] You can now walk left to " + nextLocations[0] + " or walk right to " + nextLocations[1] +
+					"\nby simple having your phone face the desired destination :)");
+		else System.out.println("[Map] You can now walk to " + nextLocations[0] + " by gently rotating your phone..");
+		System.out.println("Type [Walk] to start");
 	}
 
 	@Override

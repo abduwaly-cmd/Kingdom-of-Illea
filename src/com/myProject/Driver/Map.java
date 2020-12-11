@@ -46,7 +46,7 @@ public class Map {
 
         Node l0 = new Node(locations[LOCATION.KINGDOM.ordinal()]);          // Level 0 [Humans]
         tree.insert(l0, locations[LOCATION.FOREST.ordinal()]);              // Level 1 [Nymphs]
-        this.current = l0;                                                  // Level 1 [Nymphs]
+        //this.current = l0;                                                  // Level 1 [Nymphs]
 
         Node l1 = l0.left;
         tree.insert(l1, locations[LOCATION.SEA.ordinal()]);                 // Level 2 [1] - L [Sirens]
@@ -64,15 +64,13 @@ public class Map {
         tree.insert(l41, locations[LOCATION.ELFCITY.ordinal()]);            // Level 5 [1] - L [Elves]
 
         Node l51 = l41.left;                                                // Level 5 [1] - L [Elves]
-        tree.insert(l51, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [1] - L [Validar]
-        tree.insert(l51.left, locations[LOCATION.DEMONKINGDOM.ordinal()]);  // Level 7 [1] - L [Typhon]
+        tree.insert(l51, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [1] - L [Validar/Typhon]
 
         Node l42 = l31.right;                                               // Level 4 [2] - R [Elves]
         tree.insert(l42, locations[LOCATION.MOUNTAIN.ordinal()]);           // Level 5 [2] - L [Dwarves]
 
         Node l52 = l42.left;                                                // Level 5 [2] - L [Dwarves]
-        tree.insert(l52, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [2] - L [Validar]
-        tree.insert(l52.left, locations[LOCATION.DEMONKINGDOM.ordinal()]);  // Level 7 [2] - L [Typhon]
+        tree.insert(l52, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [2] - L [Validar/Typhon]
 
         // ------------------------ Right Branch --------------------------
         Node l22 = l1.right;                                                // Level 2 [2] - R [Dwarves]
@@ -87,15 +85,13 @@ public class Map {
         tree.insert(l43, locations[LOCATION.SEA.ordinal()]);                // Level 5 [3] - L [Sirens]
 
         Node l53 = l43.left;                                                // Level 5 [3] - L [Sirens]
-        tree.insert(l53, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [3] - L [Validar]
-        tree.insert(l53.left, locations[LOCATION.DEMONKINGDOM.ordinal()]);  // Level 7 [3] - L [Typhon]
+        tree.insert(l53, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [3] - L [Validar/Typhon]
 
         Node l44 = l32.right;                                               // Level 4 [4] - L [Sirens]
         tree.insert(l44, locations[LOCATION.ELFCITY.ordinal()]);            // Level 5 [4] - L [Elves]
 
         Node l54 = l44.left;                                                // Level 5 [4] - L [Elves]
-        tree.insert(l54, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [4] - L [Validar]
-        tree.insert(l54.left, locations[LOCATION.DEMONKINGDOM.ordinal()]);  // Level 7 [4] - L [Typhon]
+        tree.insert(l54, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [4] - L [Validar/Typhon]
 
 
         Node l33 = l22.right;                                               // Level 3 [3] - R [Elves]
@@ -105,11 +101,10 @@ public class Map {
         tree.insert(l45, locations[LOCATION.FOREST.ordinal()]);             // Level 4 [3] - L [Pixies]
 
         Node l55 = l45.left;                                                // Level 5 [4] - L [Pixies]
-        tree.insert(l55, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [4] - L [Validar]
-        tree.insert(l55.left, locations[LOCATION.DEMONKINGDOM.ordinal()]);  // Level 7 [4] - L [Typhon]
+        tree.insert(l55, locations[LOCATION.DEMONKINGDOM.ordinal()]);       // Level 6 [4] - L [Validar/Typhon]
+        this.current = l55.left;
     }
 
-    public Node getCurrent() { return current; }
     public Location getCurrentLocation() { return current.location; }
     public Location[] getNext() {
         if(current.right != null) return new Location[] { current.left.location, current.right.location };
@@ -118,30 +113,8 @@ public class Map {
     }
 
     public Location next(String pos) {
-        if (pos.equals("right") && current.right != null)
-            current = current.right;
-        else if (current.left != null)
-            current = current.left;
+        if(current.right != null && pos.equals("Right")) current = current.right;
+        else current = current.left;
         return current.location;
     }
 }
-
-
-/*
-Kingdom --
-    Description - ...
-    Talk to wizard - ...
-    .... <- wizard's first line
-    take amulet
-    go next location
- */
-/*
-Forest (day) --
-    Description - ...
-    Talk to nymphs - ...
-    .... <- nymphs first line
-    start mission
-    .... <- nymphs talk again (automatically)
-    take sphere
-    go next location
- */

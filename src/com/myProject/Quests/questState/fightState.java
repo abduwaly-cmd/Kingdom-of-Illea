@@ -12,9 +12,9 @@ import java.util.Random;
 
 public class fightState implements State {
     private String prevAttack = "";
-    private Character enemy;
+    private final Character enemy;
     private boolean attacking;
-    private Random rd = new Random();
+    private final Random rd = new Random();
 
     public fightState(Character enemy) {
         this.enemy = enemy;
@@ -29,6 +29,7 @@ public class fightState implements State {
                 if (str[4].equals("Retreating") && !prevAttack.equals(str[4])) {
                     player.setHealth(-(int) (damage * player.getVulnerability()));
                 } else if (str[4].equals("Swinging") && !prevAttack.equals(str[4])) {
+                    new SoundPlayer("Sword", false);
                     enemy.setHealth(-(int) ((damage + 10) * player.getStrength()));
                 } else if (!prevAttack.equals(str[4])) {
                     if (!attacking) {
@@ -41,7 +42,8 @@ public class fightState implements State {
                 prevAttack = str[4];
             }
             if(player.getHealth() > 0 && enemy.getHealth() <= 0) {
-                //player won
+                // player won
+                System.out.println(">> You defeated " + enemy);
                 player.getLocation().setQuestDone();
                 player.switchConsoleToTerminal();
             } else if (player.getHealth() <= 0 && enemy.getHealth() > 0) {
@@ -49,14 +51,15 @@ public class fightState implements State {
                 enemy.resetHealth();
                 quest.setActive(false);
                 quest.setState(new defaultState());
-                System.out.println("You Lost to " + enemy);
+                System.out.println(">> " + enemy + " defeated you!");
                 System.out.println("Type [start] to try Again");
                 player.setHealth(100);
                 player.switchConsoleToTerminal();
             }
-        } else {
+        } else if (str[0].equals("aight")) {
+            if(enemy.getName().contains("Validar")) player.getSoundPlayer().change("Validar");
             player.switchConsoleToSocket();
-        }
+        } else System.out.println("> Invalid input :/");
         Thread.sleep(100);
     }
 
