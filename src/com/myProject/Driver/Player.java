@@ -56,7 +56,6 @@ public class Player extends ConcreteObserver {
 		return instance;
 	}
 
-	public Map getMap() { return this.map; }
 	public int getTime() { return this.timer.getSeconds(); }
 	public String toString() { return name; }
 	public double getStrength() { return spheres.size()/4.0; }
