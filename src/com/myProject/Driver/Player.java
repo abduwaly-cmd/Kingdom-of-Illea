@@ -66,12 +66,13 @@ public class Player extends ConcreteObserver {
 	public synchronized void setHealth(int n) {
 		this.health += n;
 		if(this.health < 0) this.health = 0;
+		else if(this.health > 100) this.health = 100;
 		else if(n > 0 && n != 100) System.out.println("> You Healed +" + n + " [" + this.health + "]");
 		else if(n < 0) System.out.println("> You have been attacked " + n + " [" + this.health + "]");
 	}
 
 	public void addItem(Item item) {
-		if(item.toString().contains("sphere")) {
+		if(item.toString().toLowerCase().contains("sphere")) {
 			this.spheres.add(item);
 			System.out.println("> " + item + " has been added to your amulet...");
 		} else {

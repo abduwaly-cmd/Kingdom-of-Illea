@@ -12,11 +12,9 @@ public class terminalInput implements inputStream {
         //splits the userInput into an array
         String[] inputArr = userInput.split(" ");
 
-        if (userInput.equals(" ")) {
-            out = new String[] {"someThing that the input string equals"};
-        }
-        else if(inputArr.length >= 1 && inputArr[0].equals("take")) {
-            out = new String[] { "take", inputArr[1] };
+        if(inputArr[0].equals("take")) {
+            if(inputArr.length < 2) out = new String[] { "take", ""};
+            else out = new String[] { "take", inputArr[1] };
         }
         else if(userInput.equals("take")) {
             out = new String[] {"take", ""};
@@ -33,11 +31,12 @@ public class terminalInput implements inputStream {
         }
         //checks if the first word is "use" and sets the output to "use", "...."
         else if(inputArr[0].equals("use")) {
-            out = new String[] { "use", userInput.substring(4)};
-
+            if(inputArr.length < 2) out = new String[] { "use", ""};
+            else out = new String[] { "use", userInput.substring(4)};
         }
         else if(inputArr[0].equals("make")) {
-            out = new String[] { "make", userInput.substring(5)};
+            if(inputArr.length < 2) out = new String[] { "make", ""};
+            else out = new String[] { "make", userInput.substring(5)};
         }
         else if(inputArr[0].equals("inv")) {
             out = new String[] { "inventory" };
@@ -45,19 +44,12 @@ public class terminalInput implements inputStream {
         else if(inputArr[0].equals("test")) {
             out = new String[] { "test" };
         }
-        //checks if the length is 2, first word is "walk" and sets the output to "walk", "...."
-        else if(inputArr.length == 2 && inputArr[0].equals("walk")) {
-            out = new String[] { "walk", inputArr[1]};
-        }
-        else if(userInput.equals("walk")) {
-            out = new String[] {"walk", ""};
-        }
         //checks if the length is 2 or more, first word is "talk", second is "to" and sets the output to "talk", "...."
-        else if(inputArr.length > 2 && inputArr[0].equals("talk") && inputArr[1].equals("to")) {
-            out = new String[] { "talk", inputArr[2] };
-        }
         else if(userInput.equals("talk")) {
-            out = new String[] {"talk", ""};
+            out = new String[] { "talk", ""};
+        }
+        else if(inputArr[0].equals("talk") && inputArr[1].equals("to")) {
+            out = new String[] { "talk", inputArr[2] };
         }
         else {
             out = inputArr;
