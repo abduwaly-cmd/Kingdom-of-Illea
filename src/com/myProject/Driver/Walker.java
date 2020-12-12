@@ -10,7 +10,7 @@ public class Walker implements Runnable {
     boolean foundLoc;
     int nextLocPos = -1;
     Location loc;
-    String[] positions = new String[] { "North", "East", "West", "Sout"};
+    String[] positions = new String[] { "North", "East", "West", "South"};
 
     public Walker(Player player) {
         this.player = player;
