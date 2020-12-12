@@ -48,13 +48,14 @@ public class fightState implements State {
                 player.switchConsoleToTerminal();
             } else if (player.getHealth() <= 0 && enemy.getHealth() > 0) {
                 //player died
+                System.out.println(">> " + enemy + " defeated you!");
                 enemy.resetHealth();
                 quest.setActive(false);
                 quest.setState(new defaultState());
-                System.out.println(">> " + enemy + " defeated you!");
-                System.out.println("> Type [start] to try Again");
+                System.out.println("> You have been resurrected");
                 player.setHealth(100);
                 player.switchConsoleToTerminal();
+                System.out.println("> Type [start] to try Again");
             }
         } else if (str[0].equals("aight")) {
             if(enemy.getName().contains("Typhon")) player.getSoundPlayer().change("Typhon");

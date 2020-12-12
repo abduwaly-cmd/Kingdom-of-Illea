@@ -22,7 +22,6 @@ public class Player extends ConcreteObserver {
 	private Map map;
 	private int health;
 	private double vulnerability;
-	private Quest currentQuest;
 	private String name;
 	private Console console;
 	private Location currentLocation;
@@ -42,7 +41,6 @@ public class Player extends ConcreteObserver {
 		this.console = console;
 		this.items.add(new Sword());
 		this.items.add(new Shield());
-		this.currentQuest = null;
 		this.vulnerability = 1;
 		Command[] cmds = new Command[] { new walkToLoc(), new talkToCommand(), new startQuest(), new pickUpCommand(), new useItemCommand(), new makeItemCommand()};
 		this.controlPanel = new ControlPanel(cmds);
@@ -68,8 +66,7 @@ public class Player extends ConcreteObserver {
 	public synchronized void setHealth(int n) {
 		this.health += n;
 		if(this.health < 0) this.health = 0;
-		if (n == 100) System.out.println("> You have been resurrected");
-		else if(n > 0) System.out.println("> You Healed +" + n + " [" + this.health + "]");
+		else if(n > 0 && n != 100) System.out.println("> You Healed +" + n + " [" + this.health + "]");
 		else if(n < 0) System.out.println("> You have been attacked " + n + " [" + this.health + "]");
 	}
 
@@ -107,7 +104,7 @@ public class Player extends ConcreteObserver {
 		currentLocation = loc;
 		System.out.println("\n[Map] You are now in " + currentLocation);
 		if(soundPlayer != null) soundPlayer.change(this.currentLocation.getSoundFile());
-		System.out.println("[Map] " + currentLocation.printDescription());
+		System.out.println("[" + currentLocation + "] " + currentLocation.printDescription());
 		currentLocation.setNextLocations(nextLocs);
 		switchConsoleToTerminal();
 	}
