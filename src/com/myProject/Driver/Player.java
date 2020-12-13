@@ -4,7 +4,6 @@ import com.myProject.Items.Item;
 import com.myProject.Items.*;
 import com.myProject.Location.Location;
 import com.myProject.Observer.*;
-import com.myProject.Quests.Quest;
 import com.myProject.Timer.StopWatch;
 import com.myProject.Driver.playerCommands.*;
 
@@ -12,11 +11,14 @@ import javax.sound.sampled.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//enum commands {
-//	walk(0),
-//	look(1),
-//	time(2)
-//}
+enum commands {
+	walk,
+	talk,
+	startQuest,
+	takeItem,
+	useItem,
+	makeItem
+}
 
 public class Player extends ConcreteObserver {
 	private Map map;
@@ -116,40 +118,40 @@ public class Player extends ConcreteObserver {
 
 	@Override
 	public void update(String[] in) throws InterruptedException, UnsupportedAudioFileException, LineUnavailableException, IOException {
-		switch (in[0]) {
-			case "walk":
-				controlPanel.execute(0, this, in);
-				break;
-			case "talk":
-				controlPanel.execute(1, this, in);
-				break;
-			case "start":
-				controlPanel.execute(2, this, null);
-				break;
-			case "take":
-				controlPanel.execute(3, this, in);
-				break;
-			case "use":
-				controlPanel.execute(4, this, in);
-				break;
-			case "make":
-				controlPanel.execute(5, this, in);
-				break;
-			case "socket":
-				if(currentLocation.getQuest().isActive())
-					controlPanel.execute(2, this, in);
-				else controlPanel.execute(0, this, in);
-				break;
-			case "inventory":
-				if(items.isEmpty()) System.out.println("Your inventory is empty :)");
-				for(Item item: items)
-					System.out.print("\t> " + item.toString());
-				break;
-			default:
-				if(currentLocation.getQuest().isActive())
-					controlPanel.execute(2, this, in);
-				else System.out.println("Invalid :c");
-				break;
-		}
+		if(in != null)
+			switch (in[0]) {
+				case "walk":
+					controlPanel.execute(commands.walk.ordinal(), this, in);
+					break;
+				case "talk":
+					controlPanel.execute(commands.talk.ordinal(), this, in);
+					break;
+				case "start":
+					controlPanel.execute(commands.startQuest.ordinal(), this, null);
+					break;
+				case "take":
+					controlPanel.execute(commands.takeItem.ordinal(), this, in);
+					break;
+				case "use":
+					controlPanel.execute(commands.useItem.ordinal(), this, in);
+					break;
+				case "make":
+					controlPanel.execute(commands.makeItem.ordinal(), this, in);
+					break;
+				case "socket":
+					if(currentLocation.getQuest().isActive())
+						controlPanel.execute(commands.startQuest.ordinal(), this, in);
+					else controlPanel.execute(commands.walk.ordinal(), this, in);
+					break;
+				case "inventory":
+					if(items.isEmpty()) System.out.println("Your inventory is empty :)");
+					else for(Item item: items) System.out.print("\t> " + item.toString());
+					break;
+				default:
+					if(currentLocation.getQuest().isActive())
+						controlPanel.execute(commands.startQuest.ordinal(), this, in);
+					else System.out.println("Invalid :c");
+					break;
+			}
 	}
 }
