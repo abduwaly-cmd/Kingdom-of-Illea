@@ -103,7 +103,7 @@ public class Player extends ConcreteObserver {
 
 	private void setLocation(Location loc, Location[] nextLocs) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		if (loc.toString().toLowerCase().contains("forest")) loc.switchInstance();
-		else if (loc.toString().toLowerCase().contains("demon") && getTime() > 300) loc.switchInstance();
+		else if (loc.toString().equals("The Dooms of Valm") && getTime() > 300) loc.switchInstance();
 		currentLocation = loc;
 		System.out.println("\n[Map] You are now in " + currentLocation);
 		if(soundPlayer != null) soundPlayer.change(this.currentLocation.getSoundFile());
