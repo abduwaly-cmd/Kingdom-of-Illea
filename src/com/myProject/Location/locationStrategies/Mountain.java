@@ -19,8 +19,12 @@ public class Mountain implements LocInstance {
         this.quest = new Maze();
         this.soundFile = "Mount Daein (Maze)";
         this.character = new Dwarf();
-        this.description = "This location is home to the Dwarves that hold the Air Sphere." +
-                "\nIn order to be able to attain the Air Sphere, you must walk through" +
+        this.description = "You arrive at Mount Daein, it is huge and your eyes can't see the top"
+        		+"\nThis mountain is said to be the home to the Dwarves that hold the Air Sphere."
+        		+"\nHowever no one has seen the dwarves in many years due to the many traps set at then entrance of the mountain" +
+                "\n\nAt the entrance of the mountain you glimpse a small hat making its way through"
+                +"\nIt must be a dwarf!"
+                + "\nIn order to be able to obtain the Air Sphere, you must find your way through" +
                 "\nthis maze and find their underground city."+
                 "\nType [start] to walk through the maze...";
     }

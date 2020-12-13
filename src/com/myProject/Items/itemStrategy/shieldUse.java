@@ -16,13 +16,13 @@ public class shieldUse implements itemUse, Runnable {
 
     @Override
     public void run() {
-        System.out.println("Shield Activated, u r safe :)");
+        System.out.println("Shield Activated, Hurry you can only can use it in the next 10 seconds!");
         try {
             thread.sleep(10 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Shield Deactivated, u r safe :)");
+        System.out.println("Shield Deactivated");
         this.player.setVulnerability(1.0);
     }
 }

@@ -19,7 +19,7 @@ public class TCP_Client extends ConcreteObserver {
     TCP_Client(Subject test) {
         super(test);
         connected = false;
-        System.out.print("[Socket] Enter IP & Port [IP Port] >");
+        System.out.print("[Socket] Enter IP & Port [IP Port] in the following way [IP address] [Port number]>");
     }
 
     public boolean isReachable() {
@@ -29,10 +29,10 @@ public class TCP_Client extends ConcreteObserver {
             this.connected = true;
             return true;
         } catch (UnknownHostException e) {
-            System.out.println("[Socket] Wrong IP & Address :/ " + e.getMessage());
+            System.out.println("[Socket] Wrong IP & Address " + e.getMessage());
             e.printStackTrace();
         } catch (IOException ignored) { }
-        System.out.print("[Socket] Enter IP & Port Again plz.. [IP Port] >");
+        System.out.print("[Socket] Enter IP & Port Again again.. [IP Port] >");
         return false;
     }
 

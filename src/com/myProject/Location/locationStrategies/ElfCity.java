@@ -20,8 +20,10 @@ public class ElfCity implements LocInstance {
         this.quest = new noQuest();
         this.soundFile = "Erilia Kingdom";
         this.character = new Elf();
-        this.description = "You are kidnapped by the Elves and you need to make a healing potion " +
-                "\nto prove yourself and earn the Life Sphere. The Elves would like to talk to you...";
+        this.description = "The Erilia kingdom is full of glittering monuments and crystal buildings, "
+        		+"\nhowever as you approach the you are stopped by its residents the elves! " +
+                "\nIt seems they are not happy with your presence in their kingdom "
+                + "\nThe Elves would like to talk to you...";
     }
 
     @Override

@@ -67,7 +67,7 @@ public class fightState implements State {
     @Override
     public void printStatus() {
         System.out.println("Prepare to fight by swinging your phone!");
-        System.out.println("make sure to also use any item you want :)");
+        System.out.println("If you'd like to use any of your items now is your chance! (the command is [inv]");
         System.out.println("Type [aight] when ready!");
     }
 }

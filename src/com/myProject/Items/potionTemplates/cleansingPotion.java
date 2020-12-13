@@ -15,6 +15,6 @@ public class cleansingPotion extends Potions{
 
     @Override
     protected void add() {
-        System.out.println("Add tears of siren, detol, and half a cup clorox.");
+        System.out.println("Add tears of a siren, detol, and half a cup clorox.");
     }
 }

@@ -29,7 +29,7 @@ public class Siren extends Character {
                     "\nType [use cleansing potion] to cleanse the Lake");
             speech.add("Thank you so much kind prince! Here is the " + getItem() + " as a token of our appreciation" +
                     "\nType [take sphere] to obtain " + getItem() + " and add it to your inventory!");
-            speech.add("Thanks for your help mate :)");
+            speech.add("Now do be on your way, we are all counting on you...");
         setSpeech(speech);
     }
 }

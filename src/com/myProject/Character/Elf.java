@@ -18,9 +18,10 @@ public class Elf extends Character {
         Queue<String> speech = new LinkedList<>();
         speech.add("Hello, my name is " + getName() + "." +
                 "\n\t\tI heard that you are searching for the 5 spheres to defeat Valadar and Typhon... Am I right? " +
-                "\n\t\tIt is the most powerful sphere out of them all... " +
+                "\n\t\tThe life sphere is the most powerful sphere out of them all... " +
                 "\n\t\tPerhaps a creating a healing potion will help me " +
-                "\n\t\tdecide whether or not your worthy of the sphere." +
+                "\n\t\tdecide whether or not you are worthy of the sphere. "
+                + "\n\t\tAfter all only the most pure of heart have succeeded in brewing this potion" +
                 "\nType [make healing potion] to create the healing potion...");
         speech.add("well, you have proven yourself so here is the sphere. Use your new powers wisely." +
                 "\nType [take sphere] to obtain " + getItem() + " and add it to your inventory!");

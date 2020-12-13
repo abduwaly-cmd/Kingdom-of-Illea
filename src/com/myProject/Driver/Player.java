@@ -88,7 +88,7 @@ public class Player extends ConcreteObserver {
 				item.use(this);
 				return;
 			}
-		System.out.println("You dont have the item :/");
+		System.out.println("You do not possess this item");
 	}
 
 	public void walk(String faceOrhead, String pos) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -125,9 +125,10 @@ public class Player extends ConcreteObserver {
 					break;
 				case "talk":
 					controlPanel.execute(commands.talk.ordinal(), this, in);
-					break;
+					break;		
 				case "start":
-					controlPanel.execute(commands.startQuest.ordinal(), this, null);
+					if(!currentLocation.getQuest().isActive()) 
+						controlPanel.execute(commands.startQuest.ordinal(), this, null);
 					break;
 				case "take":
 					controlPanel.execute(commands.takeItem.ordinal(), this, in);
@@ -147,10 +148,11 @@ public class Player extends ConcreteObserver {
 					if(items.isEmpty()) System.out.println("Your inventory is empty :)");
 					else for(Item item: items) System.out.print("\t> " + item.toString());
 					break;
+					
 				default:
 					if(currentLocation.getQuest().isActive())
 						controlPanel.execute(commands.startQuest.ordinal(), this, in);
-					else System.out.println("Invalid :c");
+					else System.out.println("Please type in a valid command");
 					break;
 			}
 	}
