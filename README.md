@@ -24,9 +24,9 @@ This is an example of how to list things you need to use the software and how to
 
 2. Run the SensorLog App on your phone and configure it as seen below -
   <p float="center" align="center">
-    <img src="img/Set_jSON.PNG" width="300" height="670" />
-    <img src="img/Set_Sensors.PNG" width="300" height="670" /> 
-    <img src="img/Start_Server.PNG" width="300" height="670" />
+    <img src="img/Set_jSON.PNG" width="250" height="530" />
+    <img src="img/Set_Sensors.PNG" width="250" height="530" /> 
+    <img src="img/Start_Server.PNG" width="250" height="530" />
   </p>
 
 3. Run the game directly from terminal after switching to its directory using the following commands
