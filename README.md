@@ -45,8 +45,6 @@ This game although it might seem a simple text-based game. Alot of work went beh
 <p align="center">
   <img src="img/Map.PNG?raw=true" alt="Map/Tree of the ga,e"/>
 </p>
-<br />
-<br />
 Moreover, it was only filling to use the **phone sensors** in order to maximize the interactivity of the player throughout the game and make it more fun. Thus sensors were deeply incorporated into the game in taking trivial actions such as turning the phone to *move* between maps, swinging it to *fight* monsters/enemy.
 <br />
 <br />
