@@ -1,7 +1,6 @@
 package com.myProject.Driver;
 
 import com.myProject.Observer.*;
-import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -13,13 +12,12 @@ public class TCP_Client extends ConcreteObserver {
     private String host;
     private Socket socket;
     private boolean connected;
-    private JSONParser parser = new JSONParser();
     private static TCP_Client instance;
 
     TCP_Client(Subject test) {
         super(test);
         connected = false;
-        System.out.print("[Socket] Enter IP & Port [IP Port] in the following way [IP address] [Port number]>");
+        System.out.print("[Socket] Enter IP & Port in the following manner [IP address] [Port number]");
     }
 
     public boolean isReachable() {
