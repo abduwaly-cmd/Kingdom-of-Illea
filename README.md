@@ -42,7 +42,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- Specifications -->
 ## Specifications
 This game although it might seem a simple text-based game. Alot of work went behind it in order to make it an interactive experience with **Multiple scenes/characters/objects** with rich contextual relationships. For instance, here is a *tree* that shows the levels/scenes of the game. Thus, each player can have a unique experience depending on the choices they make throughout the game.
-![Map/Tree of the game](img/Tree.png)
+![Map/Tree of the game](img/Map.PNG?raw=true)
 <br />
 <br />
 Moreover, it was only filling to use the **phone sensors** in order to maximize the interactivity of the player throughout the game and make it more fun. Thus sensors were deeply incorporated into the game in taking trivial actions such as turning the phone to *move* between maps, swinging it to *fight* monsters/enemy.
