@@ -36,7 +36,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 
 4. Successfully start the game by entering the IP & Port number displayed on the phone screen onto the console and *enjoy* :)
-[!Image of The Game[img/Game.PNG]]
+![Image of The Game](img/Game.PNG?raw=true)
 
 
 <!-- Specifications -->
