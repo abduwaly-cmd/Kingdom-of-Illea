@@ -42,11 +42,14 @@ This is an example of how to list things you need to use the software and how to
 <!-- Specifications -->
 ## Specifications
 This game although it might seem a simple text-based game. Alot of work went behind it in order to make it an interactive experience with **Multiple scenes/characters/objects** with rich contextual relationships. For instance, here is a *tree* that shows the levels/scenes of the game. Thus, each player can have a unique experience depending on the choices they make throughout the game.
-[!Map[img/Tree.PNG]]
+[!Map[img/Tree.png]]
+<br />
 <br />
 Moreover, it was only filling to use the **phone sensors** in order to maximize the interactivity of the player throughout the game and make it more fun. Thus sensors were deeply incorporated into the game in taking trivial actions such as turning the phone to *move* between maps, swinging it to *fight* monsters/enemy.
 <br />
+<br />
 **Multithreading** has also been used and implemented throughout the game, mainly as a *counter* to see how long it takes the player to finish the game and adjust the final level difficulty accordingly as the difficulty increases the longer the player takes in the gmae.
+<br />
 <br />
 Lastly, basic **design patterns** were used in the design and implementation of the structure of this game such as the *Singleton, Subject/Observer, Command, State and Template Patterns* for various purposes.
 
