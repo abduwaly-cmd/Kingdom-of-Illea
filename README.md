@@ -22,7 +22,7 @@ This is an example of how to list things you need to use the software and how to
    git clone https://github.com/abduwaly-cmd/Kingdom-of-Illea.git
    ```
 
-2. Run the SensorLog App on your phone and configure it as seen below -
+2. Run the SensorLog App on your phone and configure it as shown below -
   <p float="center" align="center">
     <img src="img/Set_jSON.PNG" width="250" height="530" />
     <img src="img/Set_Sensors.PNG" width="250" height="530" /> 
@@ -36,23 +36,38 @@ This is an example of how to list things you need to use the software and how to
    ```
 
 4. Successfully start the game by entering the IP & Port number displayed on the phone screen onto the console and *enjoy* :)
+[!Image of The Game[img/Game.PNG]]
+
+
+<!-- Specifications -->
+## Specifications
+This game although it might seem a simple text-based game. Alot of work went behind it in order to make it an interactive experience with **Multiple scenes/characters/objects** with rich contextual relationships. For instance, here is a *tree* that shows the levels/scenes of the game. Thus, each player can have a unique experience depending on the choices they make throughout the game.
+[!Map[img/Tree.PNG]]
+<br />
+Moreover, it was only filling to use the **phone sensors** in order to maximize the interactivity of the player throughout the game and make it more fun. Thus sensors were deeply incorporated into the game in taking trivial actions such as turning the phone to *move* between maps, swinging it to *fight* monsters/enemy.
+<br />
+**Multithreading** has also been used and implemented throughout the game, mainly as a *counter* to see how long it takes the player to finish the game and adjust the final level difficulty accordingly as the difficulty increases the longer the player takes in the gmae.
+<br />
+Lastly, basic **design patterns** were used in the design and implementation of the structure of this game such as the *Singleton, Subject/Observer, Command, State and Template Patterns* for various purposes.
+
+
 
 <!-- CONTRIBUTING -->
 ## Contributers
 Project was built as a part of our AUS Software Design (COE312) course by -
-* Abdulrahman Waheed
-* Asma Al-Meer
-* Sarah Al-Dulaimi
-* Ahmed Hamad
+1. Abdulrahman Waheed
+2. Asma Al-Meer
+3. Sarah Al-Dulaimi
+4. Ahmed Hamad
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@abduwa1y](https://twitter.com/abduwa1y) - [abdulrahmanwaheedali@gmail.com](mailto:abdulrahmanwaheedali@gmail.com)
+Abdulrahman Waheed - [@abduwa1y](https://twitter.com/abduwa1y) - [abdulrahmanwaheedali@gmail.com](mailto:abdulrahmanwaheedali@gmail.com)
 
 Project Link: [https://github.com/abduwaly-cmd/Kingdom-of-Illea](https://github.com/abduwaly-cmd/Kingdom-of-Illea)
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT(https://choosealicense.com/licenses/mit/) License. See `LICENSE` for more information.
+Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License.
