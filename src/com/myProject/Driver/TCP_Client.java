@@ -17,7 +17,7 @@ public class TCP_Client extends ConcreteObserver {
     TCP_Client(Subject test) {
         super(test);
         connected = false;
-        System.out.print("[Socket] Enter IP & Port in the following manner [IP address] [Port number]");
+        System.out.print("[Socket] Enter IP & Port in the following manner [IP Port]");
     }
 
     public boolean isReachable() {
