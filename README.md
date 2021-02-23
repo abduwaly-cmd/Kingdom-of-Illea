@@ -24,9 +24,9 @@ This is an example of how to list things you need to use the software and how to
 
 2. Run the SensorLog App on your phone and configure it as shown below -
   <p float="center" align="center">
-    <img src="img/Set_jSON.PNG" width="250" height="530" />
-    <img src="img/Set_Sensors.PNG" width="250" height="530" /> 
-    <img src="img/Start_Server.PNG" width="250" height="530" />
+    <img src="img/Set_jSON.PNG?raw=true" width="250" height="530" />
+    <img src="img/Set_Sensors.PNG?raw=true" width="250" height="530" /> 
+    <img src="img/Start_Server.PNG?raw=true" width="250" height="530" />
   </p>
 
 3. Run the game directly from terminal after switching to its directory using the following commands
@@ -42,7 +42,9 @@ This is an example of how to list things you need to use the software and how to
 <!-- Specifications -->
 ## Specifications
 This game although it might seem a simple text-based game. Alot of work went behind it in order to make it an interactive experience with **Multiple scenes/characters/objects** with rich contextual relationships. For instance, here is a *tree* that shows the levels/scenes of the game. Thus, each player can have a unique experience depending on the choices they make throughout the game.
-![Map/Tree of the game](img/Map.PNG?raw=true)
+<p align="center">
+  <img src="img/Map.PNG?raw=true" alt="Map/Tree of the ga,e"/>
+</p>
 <br />
 <br />
 Moreover, it was only filling to use the **phone sensors** in order to maximize the interactivity of the player throughout the game and make it more fun. Thus sensors were deeply incorporated into the game in taking trivial actions such as turning the phone to *move* between maps, swinging it to *fight* monsters/enemy.
