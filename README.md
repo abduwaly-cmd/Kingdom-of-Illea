@@ -23,7 +23,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 
 2. Run the SensorLog App on your phone and configure it as seen below -
-  <p float="left">
+  <p float="center" align="center">
     <img src="img/Set_jSON.PNG" width="300" height="670" />
     <img src="img/Set_Sensors.PNG" width="300" height="670" /> 
     <br />
@@ -38,7 +38,7 @@ This is an example of how to list things you need to use the software and how to
    java -cp out/production/myProject:src/com/myProject/lib/json-simple-1.1.jar com.myProject.Driver.Main
    ```
 
-4. Successfully start the game by entering the IP & Port number displayed on the phone screen onto the console and _enjoy :)
+4. Successfully start the game by entering the IP & Port number displayed on the phone screen onto the console and *enjoy* :)
 
 <!-- CONTRIBUTING -->
 ## Contributers
