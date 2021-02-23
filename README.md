@@ -26,10 +26,7 @@ This is an example of how to list things you need to use the software and how to
   <p float="center" align="center">
     <img src="img/Set_jSON.PNG" width="300" height="670" />
     <img src="img/Set_Sensors.PNG" width="300" height="670" /> 
-    <br />
-    <span align = "center">
-      <img src="img/Start_Server.PNG" width="300" height="670" />
-    </span>
+    <img src="img/Start_Server.PNG" width="300" height="670" />
   </p>
 
 3. Run the game directly from terminal after switching to its directory using the following commands
